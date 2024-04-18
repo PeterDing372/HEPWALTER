@@ -1,17 +1,17 @@
 CXX=g++
-EXECUTABLE = main.o
+CXXFLAGS = -Wall -Wextra -g
 OBJECTS = BPFGrep.o
 
 test:
-	$(CXX) process_args.cpp -o process_args.o
-devMain: devMain.cpp BPFGrep.o
-	$(CXX) devMain.cpp $(OBJECTS) -o devMain.o
+	$(CXX) $(CXXFLAGS) process_args.cpp -o process_args
+devMain: devMain.cpp $(OBJECTS)
+	$(CXX) $(CXXFLAGS) devMain.cpp $(OBJECTS) -o devMain
 main: main.cpp BPFGrep.o
-	$(CXX) main.cpp $(OBJECTS) -o main.o
+	$(CXX) $(CXXFLAGS) main.cpp $(OBJECTS) -o main.o
 BPFGrep.o: BPFGrep.cpp BPFGrep.h
-	$(CXX) -c BPFGrep.cpp  -o BPFGrep.o
+	$(CXX) $(CXXFLAGS) -c BPFGrep.cpp  -o BPFGrep.o
 
 clean:
-	rm -rf *.o
+	rm -rf *.o process_args devMain main
 
-PHONY: clean
+.PHONY: clean

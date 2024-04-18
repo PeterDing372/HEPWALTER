@@ -1,6 +1,6 @@
 #include "BPFGrep.h"
-#include <iostream>
 #define BUFFEREND "**HELALTER***"
+#include <iostream>
 
 
 BPFGrep::BPFGrep(const std::string& filename) {
@@ -31,7 +31,7 @@ std::string BPFGrep::readArgLabel() {
 
 }
 
-std::string BPFGrep::readArgPtr() {
+size_t BPFGrep::readArgPtr() {
     char ch = '\0';
     std::string arg_ptr = "";
 
@@ -41,8 +41,21 @@ std::string BPFGrep::readArgPtr() {
         }
         std::cout << arg_ptr << std::endl;
     }
-    return arg_ptr;
+    return toInt(arg_ptr);
+    
 }
+size_t BPFGrep::toInt(std::string input) {
+    size_t num = 0;
+    try {
+        num = std::stoi(input);
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid argument: " << input << std::endl;
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Out of range: " << e.what() << std::endl;
+    }
+    return num;
+}
+
 
 std::string BPFGrep::readBufferContent() {
     char ch = '\0';
@@ -66,6 +79,14 @@ std::string BPFGrep::readBufferContent() {
         std::cout << buffer_content << std::endl;
     }
     return buffer_content;
+
+}
+
+void BPFGrep::readOneArg(std::string &label, std::string& bufferContent, int& ptrAddr) {
+    // NOTE: the function call procedure needs to be in this order
+    label = readArgLabel();
+    ptrAddr = readArgPtr();
+    bufferContent = readBufferContent();
 
 }
 
