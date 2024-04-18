@@ -1,0 +1,95 @@
+//uprobe:/proc/24586/root/usr/bin/mongod:_ZN5mongo16OperationContextC2EPNS_6ClientEONS_25UniqueOperationIdRegistry15OperationIdSlotE
+/*uprobe:bin/bash:readline
+{
+   //printf("ptr\t%zu\t%zu\t%zu\t%zu\t%zu\t%zu\n", arg0, arg1, arg2, arg3, arg4, arg5);
+   printf("val\t%rh\t%rh\t%rh\t%rh\t%rh\t%rh\t\n", buf(arg0, 20), buf(arg1, 20), buf(arg2, 20), buf(arg3, 20), buf(arg4, 20), buf(arg5, 20));
+   //printf("val\t%rh\t%rh\t%rh\t%rh\t%rh\t%rh\t\n", buf(arg0, 40), buf(arg1, 40), buf(arg2, 40), buf(arg3, 40), buf(arg4, 40), buf(arg5, 40));
+   //printf("val\t%rh\t%rh\t%rh\t%rh\t%rh\t%rh\t\n", buf(arg0, 80), buf(arg1, 80), buf(arg2, 80), buf(arg3, 80), buf(arg4, 80), buf(arg5, 80));
+
+
+}*/
+
+uretprobe:/bin/bash:readline
+{
+   //printf("ptr\t%zu\n", retval);
+   //printf("val\t%r\n", buf(retval, 20));
+   //for($a=0; $a < 10; $a++) { @=count() }
+   /*for($i = 0; $i < 10; $i++) 
+   {
+      //printf("val\t%r\n", buf(retval + $i*20, 20));
+   }*/
+
+   printf("val\t%r\n", buf(retval, 20));
+   printf("val\t%r\n", buf(retval + 20, 20));
+   printf("val\t%r\n", buf(retval + 40, 20));
+   printf("val\t%r\n", buf(retval + 60, 20));
+   printf("val\t%r\n", buf(retval + 80, 20));
+   printf("val\t%r\n", buf(retval + 100, 20));
+   printf("val\t%r\n", buf(retval + 120, 20));
+   printf("val\t%r\n", buf(retval + 140, 20));
+   printf("val\t%r\n", buf(retval + 160, 20));
+   printf("val\t%r\n", buf(retval + 180, 20));
+   printf("val\t%r\n", buf(retval + 200, 20));
+
+   $pointer = retval+200;
+
+   printf("val\t%r\n", buf($pointer, 20));
+   printf("val\t%r\n", buf($pointer + 20, 20));
+   printf("val\t%r\n", buf($pointer + 40, 20));
+   printf("val\t%r\n", buf($pointer + 60, 20));
+   printf("val\t%r\n", buf($pointer + 80, 20));
+   printf("val\t%r\n", buf($pointer + 100, 20));
+   printf("val\t%r\n", buf($pointer + 120, 20));
+   printf("val\t%r\n", buf($pointer + 140, 20));
+   printf("val\t%r\n", buf($pointer + 160, 20));
+   printf("val\t%r\n", buf($pointer + 180, 20));
+   printf("val\t%r\n", buf($pointer + 200, 20));
+   
+   $pointer = $pointer+200;
+   printf("val\t%r\n", buf($pointer, 20));
+   printf("val\t%r\n", buf($pointer + 20, 20));
+   printf("val\t%r\n", buf($pointer + 40, 20));
+   printf("val\t%r\n", buf($pointer + 60, 20));
+   printf("val\t%r\n", buf($pointer + 80, 20));
+   printf("val\t%r\n", buf($pointer + 100, 20));
+   printf("val\t%r\n", buf($pointer + 120, 20));
+   printf("val\t%r\n", buf($pointer + 140, 20));
+   printf("val\t%r\n", buf($pointer + 160, 20));
+   printf("val\t%r\n", buf($pointer + 180, 20));
+   printf("val\t%r\n", buf($pointer + 200, 20));
+
+   $pointer = $pointer+200;
+   printf("val\t%r\n", buf($pointer, 20));
+   printf("val\t%r\n", buf($pointer + 20, 20));
+   printf("val\t%r\n", buf($pointer + 40, 20));
+   printf("val\t%r\n", buf($pointer + 60, 20));
+   printf("val\t%r\n", buf($pointer + 80, 20));
+   printf("val\t%r\n", buf($pointer + 100, 20));
+   printf("val\t%r\n", buf($pointer + 120, 20));
+   printf("val\t%r\n", buf($pointer + 140, 20));
+   printf("val\t%r\n", buf($pointer + 160, 20));
+   printf("val\t%r\n", buf($pointer + 180, 20));
+   printf("val\t%r\n", buf($pointer + 200, 20));
+
+   $pointer = $pointer+200;
+   printf("val\t%r\n", buf($pointer, 20));
+   printf("val\t%r\n", buf($pointer + 20, 20));
+   printf("val\t%r\n", buf($pointer + 40, 20));
+   printf("val\t%r\n", buf($pointer + 60, 20));
+   printf("val\t%r\n", buf($pointer + 80, 20));
+   printf("val\t%r\n", buf($pointer + 100, 20));
+   printf("val\t%r\n", buf($pointer + 120, 20));
+   printf("val\t%r\n", buf($pointer + 140, 20));
+   printf("val\t%r\n", buf($pointer + 160, 20));
+   printf("val\t%r\n", buf($pointer + 180, 20));
+   printf("val\t%r\n", buf($pointer + 200, 20));
+
+   
+   
+}
+
+/*uretprobe:/proc/24586/root/usr/bin/mongod:_ZN5mongo16OperationContextC2EPNS_6ClientEONS_25UniqueOperationIdRegistry15OperationIdSlotE
+{
+   printf("ptr\t%zu\n", retval);
+   printf("val\t%rh\n", buf(retval, 20));
+}*/
