@@ -5,7 +5,6 @@
 
 #define BUFFEREND "**HELALTER***"
 
-using namespace std;
 // Reads the argument type. {sArg0, sRetVal, dArg0, dRetVal}
 void read_arg_label(std::ifstream& file) {
 
