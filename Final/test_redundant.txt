@@ -1,0 +1,15 @@
+sArg0:1000
+the conte
+nt01 **HELALTER***
+sArg1:2000
+this is the redundant % content \ non \n **HELALTER***
+sArg2:1000
+the conte
+nt01 **HELALTER***
+sArg3:4000
+(divergence test) the fourth content \ non \n **HELALTER***
+sArg4:5000
+(divergence test) the fifth content \ non \n **HELALTER***
+sArg5:6000
+this is the redundant % content \ non \n **HELALTER***
+
