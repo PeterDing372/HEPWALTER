@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-duration = 5  # Duration in seconds
+duration = 100  # Duration in seconds
 
 def is_zero_string(line):
     if line[-1] != "h":
