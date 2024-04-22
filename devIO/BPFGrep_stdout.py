@@ -49,6 +49,8 @@ class BPFGrep:
         self.verify_initial_output()
         self.align_cluster()
 
+    def terminate_process(self):
+        self.process.terminate()
  
         
 
@@ -98,6 +100,11 @@ class BPFGrep:
             self.process.stderr.close()
             self.process.wait()  # Wait for the process to terminate
     
+    def run_for_duration():
+        # TODO
+        return 
+    
+
     def read_one_cluster(self):
         # error reporting
         
@@ -120,6 +127,9 @@ class BPFGrep:
                 break
             if (label not in self.ARGs):
                 print(f"unknown argument label: {label}")
+                if("Lost" in label):
+                    self.clear()
+                    break
                 sys.exit(1)
             if (label == "sArg0"):
                 self.report()
@@ -168,8 +178,10 @@ class BPFGrep:
                 key_j = keys[j]
                 arg_i = self.ARGs[key_i]
                 arg_j = self.ARGs[key_j]
-
-                if(arg_i.get_valid() and arg_j.get_valid()
+                
+                pointers_different = arg_i.ptr_addr != arg_j.ptr_addr
+                if(pointers_different and 
+                   arg_i.get_valid() and arg_j.get_valid()
                     and self.not_zero_string(arg_i.buffer_content) and self.not_zero_string(arg_j.buffer_content)):
                     div_index = self.find_divergence(arg_i.buffer_content, arg_j.buffer_content)
                     div_values.append(div_index)
@@ -205,7 +217,6 @@ class BPFGrep:
 
     def read_arg_label(self):
         arg_type = ""
-        last4 = ""
         while True:
             ch = self.stream.read(1)
             if ch == ':' or not ch:

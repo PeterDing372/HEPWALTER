@@ -7,12 +7,14 @@ def run_bpftrace_for_duration(bpffile="final_run.bt"):
         print("start")
         # start_time = time.time()
         command = f"sudo bpftrace {bpffile}"
-        BPFGrepObj = BPFGrep(command, verbose=True)
+        BPFGrepObj = BPFGrep(command, verbose=False)
         print("start read")
-        for i in range(50):
+        for i in range(100):
             BPFGrepObj.read_one_cluster()
         for item in BPFGrepObj.divergenceList:
             print(f"max: {item[0]} avg : {item[1]}")
+        print(f"total clusters captured: {len(BPFGrepObj.divergenceList)}" )
+        
         return "done"
     except Exception as e:
         return f"An error occurred: {e}"

@@ -1,25 +1,25 @@
 
 // Source Args
-uprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
+uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE19appendDiscriminatorENS0_13DiscriminatorE
 {
 
-	printf("sArg0:%zu\n%r", arg0, buf(arg0, 20));
-	printf("%r**HEPWALTER***\n", buf(arg0+20, 20));
+	printf("sArg0:%zu\n%r", arg0, buf(arg0, 64));
+	printf("%r**HEPWALTER***\n", buf(arg0+64, 64));
 
-	printf("sArg1:%zu\n%r", arg1, buf(arg1, 20));
-	printf("%r**HEPWALTER***\n", buf(arg1+20, 20));
+	printf("sArg1:%zu\n%r", arg1, buf(arg1, 64));
+	printf("%r**HEPWALTER***\n", buf(arg1+64, 64));
 
-	printf("sArg2:%zu\n%r", arg2, buf(arg2, 20));
-	printf("%r**HEPWALTER***\n", buf(arg2+20, 20));
+	printf("sArg2:%zu\n%r", arg2, buf(arg2, 64));
+	printf("%r**HEPWALTER***\n", buf(arg2+64, 64));
 
-	printf("sArg3:%zu\n%r", arg3, buf(arg3, 20));
-	printf("%r**HEPWALTER***\n", buf(arg3+20, 20));
+	printf("sArg3:%zu\n%r", arg3, buf(arg3, 64));
+	printf("%r**HEPWALTER***\n", buf(arg3+64, 64));
 
-	printf("sArg4:%zu\n%r", arg4, buf(arg4, 20));
-	printf("%r**HEPWALTER***\n", buf(arg4+20, 20));
+	printf("sArg4:%zu\n%r", arg4, buf(arg4, 64));
+	printf("%r**HEPWALTER***\n", buf(arg4+64, 64));
 
-	printf("sArg5:%zu\n%r", arg5, buf(arg5, 20));
-	printf("%r**HEPWALTER***\n", buf(arg5+20, 20));
+	printf("sArg5:%zu\n%r", arg5, buf(arg5, 64));
+	printf("%r**HEPWALTER***\n", buf(arg5+64, 64));
 
 
 
@@ -27,13 +27,11 @@ uprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
 }
 
 // Source Retval
-uretprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
+uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE19appendDiscriminatorENS0_13DiscriminatorE
 {
 
-	printf("sRetVal:%zu\n%r", retval, buf(retval, 20));
-	printf("%r", buf(retval+20, 20));
-	printf("%r", buf(retval+40, 20));
-	printf("%r**HEPWALTER***\n", buf(retval+60, 20));
+	printf("sRetVal:%zu\n%r", retval, buf(retval, 64));
+	printf("%r**HEPWALTER***\n", buf(retval+64, 64));
 
 
 
@@ -41,58 +39,37 @@ uretprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
 }
 
 // Destination Args
-uprobe:/proc/11923/root//usr/bin/mongod:_ZNK5mongo11mutablebson8Document4Impl12writeElementINS_16BSONArrayBuilderEEEvjPT_PKNS_10StringDataE
+uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE12_appendBytesEPKvmb
 {
 
-	printf("dArg0:%zu\n%r", arg0, buf(arg0, 20));
-	printf("%r", buf(arg0+20, 20));
-	printf("%r", buf(arg0+40, 20));
-	printf("%r", buf(arg0+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg0+80, 20));
+	printf("dArg0:%zu\n%r", arg0, buf(arg0, 64));
+	printf("%r**HEPWALTER***\n", buf(arg0+64, 64));
 
-	printf("dArg1:%zu\n%r", arg1, buf(arg1, 20));
-	printf("%r", buf(arg1+20, 20));
-	printf("%r", buf(arg1+40, 20));
-	printf("%r", buf(arg1+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg1+80, 20));
+	printf("dArg1:%zu\n%r", arg1, buf(arg1, 64));
+	printf("%r**HEPWALTER***\n", buf(arg1+64, 64));
 
-	printf("dArg2:%zu\n%r", arg2, buf(arg2, 20));
-	printf("%r", buf(arg2+20, 20));
-	printf("%r", buf(arg2+40, 20));
-	printf("%r", buf(arg2+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg2+80, 20));
+	printf("dArg2:%zu\n%r", arg2, buf(arg2, 64));
+	printf("%r**HEPWALTER***\n", buf(arg2+64, 64));
 
-	printf("dArg3:%zu\n%r", arg3, buf(arg3, 20));
-	printf("%r", buf(arg3+20, 20));
-	printf("%r", buf(arg3+40, 20));
-	printf("%r", buf(arg3+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg3+80, 20));
+	printf("dArg3:%zu\n%r", arg3, buf(arg3, 64));
+	printf("%r**HEPWALTER***\n", buf(arg3+64, 64));
 
-	printf("dArg4:%zu\n%r", arg4, buf(arg4, 20));
-	printf("%r", buf(arg4+20, 20));
-	printf("%r", buf(arg4+40, 20));
-	printf("%r", buf(arg4+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg4+80, 20));
+	printf("dArg4:%zu\n%r", arg4, buf(arg4, 64));
+	printf("%r**HEPWALTER***\n", buf(arg4+64, 64));
 
-	printf("dArg5:%zu\n%r", arg5, buf(arg5, 20));
-	printf("%r", buf(arg5+20, 20));
-	printf("%r", buf(arg5+40, 20));
-	printf("%r", buf(arg5+60, 20));
-	printf("%r**HEPWALTER***\n", buf(arg5+80, 20));
+	printf("dArg5:%zu\n%r", arg5, buf(arg5, 64));
+	printf("%r**HEPWALTER***\n", buf(arg5+64, 64));
 
 
 
 }
 
 // Destination Retval
-uretprobe:/proc/11923/root//usr/bin/mongod:_ZNK5mongo11mutablebson8Document4Impl12writeElementINS_16BSONArrayBuilderEEEvjPT_PKNS_10StringDataE
+uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE12_appendBytesEPKvmb
 {
 
-	printf("dRetval:%zu\n%r", retval, buf(retval, 20));
-	printf("%r", buf(retval+20, 20));
-	printf("%r", buf(retval+40, 20));
-	printf("%r", buf(retval+60, 20));
-	printf("%r**HEPWALTER***\n", buf(retval+80, 20));
+	printf("dRetval:%zu\n%r", retval, buf(retval, 64));
+	printf("%r**HEPWALTER***\n", buf(retval+64, 64));
 
 
 

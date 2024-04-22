@@ -6,14 +6,15 @@ import argparse
 #parser = argparse.ArgumentParser()
 #parser.add_argument()
 
+
 #container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
-container_name = "socialnetwork_user-timeline-mongodb_1"
+container_name = "socialnetwork_social-graph-mongodb_1"
 
 binary = "/usr/bin/mongod"
 # source unmangled name
-Source = "mongo::DecorationRegistry<mongo::OperationContext>::constructAt<boost::optional<mongo::BSONArray"
+Source = "mongo::KeyString::BuilderBase<mongo::StackBufBuilderBase<512ul> >::appendDiscriminator(mongo::KeyString::Discriminator)"
 # dest unmangled name
-Dest = "mongo::OperationContext::OperationContext(mongo::Client"
+Dest = "mongo::KeyString::BuilderBase<mongo::StackBufBuilderBase<512ul> >::_appendBytes(void const*, unsigned long, bool)"
 bufflength = 64
 #ptr_incrementlength = 1
 ptr_incrementAmount = 64
