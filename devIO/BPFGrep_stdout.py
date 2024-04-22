@@ -134,8 +134,9 @@ class BPFGrep:
     
     def compare_all_buff(self):
         """
-        Compare all buff content and 
-        returns an index list of tuples containing (i,j) pairs and divergence index
+        Compare all buff content on only valid content: 1. Non-zero, 2. Striped 3. Valid
+        returns: an list of tuples containing (max, avg) pairs of divergence length
+
         """
         self._print("Compare all buffers")
         div_values = []
@@ -148,7 +149,9 @@ class BPFGrep:
                 key_j = keys[j]
                 arg_i = self.ARGs[key_i]
                 arg_j = self.ARGs[key_j]
-                if(arg_i.get_valid() and arg_j.get_valid()):
+
+                if(arg_i.get_valid() and arg_j.get_valid()
+                    and self.not_zero_string(arg_i.buffer_content) and self.not_zero_string(arg_j.buffer_content)):
                     div_index = self.find_divergence(arg_i.buffer_content, arg_j.buffer_content)
                     div_values.append(div_index)
         return div_values
@@ -245,11 +248,11 @@ class BPFGrep:
         str = str.replace('`','')
         return str
 
-    def is_zero_string(self, str):
+    def not_zero_string(self, str):
         for char in str:
             if char != '0':
-                return False
-        return True
+                return True
+        return False
     def find_divergence(self, str1, str2):
         """
         Finds the divergence index of two strings
