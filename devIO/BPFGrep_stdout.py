@@ -4,8 +4,9 @@ from ArgClass import ArgClass
 
 class BPFGrep:
     
-    def __init__(self, command, verbose=False):
+    def __init__(self, command=None, verbose=False, useFile=False, fileName=None):
         self.verbose = verbose  # Class attribute to control printing
+        self.divergenceList = []
         # Define all argument attributes
         self.ARGs = {
                 "sArg0": ArgClass(),
@@ -23,29 +24,38 @@ class BPFGrep:
                 "dArg5": ArgClass(),
                 "dRetval": ArgClass()
         }
+        
+        if (useFile):
+            try:
+                self.stream = open(fileName, 'r')
+            except Exception as e:
+                print("Failed to open file:", str(e))
+                sys.exit(1)
+        else:
+            try:
+                # Set up the subprocess to execute the command and capture its stdout
+                self.process = subprocess.Popen(
+                    command, 
+                    shell=True, 
+                    stdout=subprocess.PIPE, 
+                    stderr=subprocess.PIPE, 
+                    text=True
+                )
+                self.stream = self.process.stdout
+            except Exception as e:
+                print("Failed to start subprocess:", str(e))
+                sys.exit(1)
         self.clear()
-        self.divergenceList = []
-        try:
-            # Set up the subprocess to execute the command and capture its stdout
-            self.process = subprocess.Popen(
-                command, 
-                shell=True, 
-                stdout=subprocess.PIPE, 
-                stderr=subprocess.PIPE, 
-                text=True
-            )
-            self.stream = self.process.stdout
-            self._print("verify")
-            self.verify_initial_output()
-            self.align_cluster()
-        except Exception as e:
-            print("Failed to start subprocess:", str(e))
-            sys.exit(1)
+        self.verify_initial_output()
+        self.align_cluster()
+
+ 
         
 
     def verify_initial_output(self):
         """Reads the first line of output from the subprocess 
             and verifies it is \"Attaching 4 probes...\""""
+        self._print("verifying...")
         try:
             # Read the first line from the output
             initial_output = self.stream.readline()
@@ -87,18 +97,27 @@ class BPFGrep:
             self.process.stdout.close()
             self.process.stderr.close()
             self.process.wait()  # Wait for the process to terminate
-
+    
     def read_one_cluster(self):
+        # error reporting
+        
+        if(self.ARGs["sArg0"].get_valid() == False):
+            print("[read_one_cluster]: Wrong inital status")
+            print("[read_one_cluster]: Re-aligning...")
+            self.align_cluster()
+        self._read_one_cluster()
+
+    def _read_one_cluster(self):
         """
         Read one cluster of argument information
         """
-        # error reporting
         if (self.ARGs["sArg0"].get_valid() == False and self.ARGs["sArg1"].get_valid() == True):
-            print("[read_one_cluster]: exit with wrong alignment")
-        if(self.ARGs["sArg0"].get_valid() == False):
-            print("[read_one_cluster]: entered with wrong inital statue")
+            print("[read_one_cluster]: entered with wrong alignment")
         while True:
             label, buffer_content, ptr_addr = self.read_one_arg()
+            if (label == None):
+                self.clear()
+                break
             if (label not in self.ARGs):
                 print(f"unknown argument label: {label}")
                 sys.exit(1)
@@ -171,13 +190,22 @@ class BPFGrep:
         label = self.read_arg_label()
         ptr_addr = self.read_arg_ptr()
         buffer_content = self.read_buffer_content()
-
-        return label, buffer_content, ptr_addr
+        if (label == None or ptr_addr == None or buffer_content == None):
+            return None, None, None
+        else:
+            return label, buffer_content, ptr_addr
 
     # ---------- Helper Functions Below ----------
+    def lastNchar(self, str, ch, N):
+        str += ch
+        if len(str) > N:
+                str = str[1:]
+        return str
+
 
     def read_arg_label(self):
         arg_type = ""
+        last4 = ""
         while True:
             ch = self.stream.read(1)
             if ch == ':' or not ch:
@@ -206,9 +234,11 @@ class BPFGrep:
     def read_buffer_content(self):
         self._print("read buffer content:")
         buffer_content = ""
-        last13_chars = ""
+        last14_chars = ""
+        last4_chars = ""
         max_chars = 14
         count = 0
+        failed = False  
 
         while True:
             count+=1
@@ -216,20 +246,28 @@ class BPFGrep:
             if not ch:
                 break
             buffer_content += ch
-            last13_chars += ch
-            # print(f"{last13_chars} {count}")
+            last14_chars = self.lastNchar(last14_chars, ch, 14)
+            last4_chars = self.lastNchar(last4_chars, ch, 4)
+            # last14_chars += ch
+            # if len(last14_chars) > max_chars:
+            #     last14_chars = last14_chars[1:]
+            # print(f"{last14_chars} {count}")
             # print(f"{ch}")
+            if (last4_chars == "Lost"):
+                # discard the cluster
+                failed = True
+                break
 
-            if len(last13_chars) > max_chars:
-                last13_chars = last13_chars[1:]
-
-            if self.is_buffer_end(last13_chars):
+            if self.is_buffer_end(last14_chars):
                 self.stream.read(1)
                 break
         buffer_content = self.clean_tail(buffer_content, max_chars)
         buffer_content = self.strip_string(buffer_content)
         self._print(buffer_content)
-        return buffer_content
+        if (failed):
+            return None
+        else: 
+            return buffer_content
 
     def is_buffer_end(self, input_str):
         return input_str == "**HEPWALTER***"

@@ -1,6 +1,6 @@
 
 // Source Args
-uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16OperationContextEE11constructAtIN5boost8optionalINS_9BSONArrayEEEEEvPv
+uprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
 {
 
 	printf("sArg0:%zu\n%r", arg0, buf(arg0, 20));
@@ -27,7 +27,7 @@ uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16Opera
 }
 
 // Source Retval
-uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16OperationContextEE11constructAtIN5boost8optionalINS_9BSONArrayEEEEEvPv
+uretprobe:/proc/11923/root//usr/bin/mongod:_ZN5mongo14DecimalCounterIjEppEv
 {
 
 	printf("sRetVal:%zu\n%r", retval, buf(retval, 20));
@@ -41,7 +41,7 @@ uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16Op
 }
 
 // Destination Args
-uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo16OperationContextC1EPNS_6ClientEj
+uprobe:/proc/11923/root//usr/bin/mongod:_ZNK5mongo11mutablebson8Document4Impl12writeElementINS_16BSONArrayBuilderEEEvjPT_PKNS_10StringDataE
 {
 
 	printf("dArg0:%zu\n%r", arg0, buf(arg0, 20));
@@ -85,7 +85,7 @@ uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo16OperationContextC1EPNS_6Clien
 }
 
 // Destination Retval
-uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo16OperationContextC1EPNS_6ClientEj
+uretprobe:/proc/11923/root//usr/bin/mongod:_ZNK5mongo11mutablebson8Document4Impl12writeElementINS_16BSONArrayBuilderEEEvjPT_PKNS_10StringDataE
 {
 
 	printf("dRetval:%zu\n%r", retval, buf(retval, 20));

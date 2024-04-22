@@ -5,7 +5,7 @@ def run_bpftrace_for_duration(bpffile="final_run.bt"):
     try:
         # Run the BPFtrace script using timeout command
         print("start")
-        start_time = time.time()
+        # start_time = time.time()
         command = f"sudo bpftrace {bpffile}"
         BPFGrepObj = BPFGrep(command, verbose=True)
         print("start read")
