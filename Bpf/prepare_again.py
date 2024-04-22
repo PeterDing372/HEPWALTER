@@ -1,5 +1,9 @@
 import subprocess
 import json
+import argparse
+
+#parser = argparse.ArgumentParser()
+#parser.add_argument()
 
 #container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
 container_name = "socialnetwork_social-graph-mongodb_1"
@@ -98,23 +102,23 @@ def args_string(type_args ,ptrIncrementLength, incrementAmount):
         increment = 0
         if type_args.lower() == "source":
             if currPtrIncrementLength <= 0:
-                curr_string += "\tprintf(\"sArgJESSE:%zu\\n%rh**HEPWALTER***\\n\", argJESSE, buf(argJESSE, 20));\n\n"
+                curr_string += "\tprintf(\"sArgJESSE:%zu\\n%r**HEPWALTER***\\n\", argJESSE, buf(argJESSE, 20));\n\n"
             else:
-                curr_string += "\tprintf(\"sArgJESSE:%zu\\n%rh\", argJESSE, buf(argJESSE, 20));\n"
+                curr_string += "\tprintf(\"sArgJESSE:%zu\\n%r\", argJESSE, buf(argJESSE, 20));\n"
         elif type_args.lower() == "destination":
             if currPtrIncrementLength <= 0:
-                curr_string += "\tprintf(\"dArgJESSE:%zu\\n%rh**HEPWALTER***\\n\", argJESSE, buf(argJESSE, 20));\n\n"
+                curr_string += "\tprintf(\"dArgJESSE:%zu\\n%r**HEPWALTER***\\n\", argJESSE, buf(argJESSE, 20));\n\n"
             else:
-                curr_string += "\tprintf(\"dArgJESSE:%zu\\n%rh\", argJESSE, buf(argJESSE, 20));\n"
+                curr_string += "\tprintf(\"dArgJESSE:%zu\\n%r\", argJESSE, buf(argJESSE, 20));\n"
 
 
         while(currPtrIncrementLength):
             increment += incrementAmount
             if currPtrIncrementLength == 1:
                 #if type_args.lower() == "source":
-                curr_string += "\tprintf(\"%rh**HEPWALTER***\\n\", buf(argJESSE+" + str(increment) + ", 20));\n\n"
+                curr_string += "\tprintf(\"%r**HEPWALTER***\\n\", buf(argJESSE+" + str(increment) + ", 20));\n\n"
             else:
-                curr_string += "\tprintf(\"%rh\", buf(argJESSE+" + str(increment) + ", 20));\n"
+                curr_string += "\tprintf(\"%r\", buf(argJESSE+" + str(increment) + ", 20));\n"
             
 
             currPtrIncrementLength -= 1
@@ -135,14 +139,14 @@ def retval_string(type_args ,ptrIncrementLength, incrementAmount):
     increment = 0
     if type_args.lower() == "source":
         if currPtrIncrementLength <= 0:
-            curr_string += "\tprintf(\"sRetVal:%zu\\n%rh**HEPWALTER***\\n\", retval, buf(retval, 20));\n\n"
+            curr_string += "\tprintf(\"sRetVal:%zu\\n%r**HEPWALTER***\\n\", retval, buf(retval, 20));\n\n"
         else:
-            curr_string += "\tprintf(\"sRetVal:%zu\\n%rh\", retval, buf(retval, 20));\n"
+            curr_string += "\tprintf(\"sRetVal:%zu\\n%r\", retval, buf(retval, 20));\n"
     elif type_args.lower() == "destination":
         if currPtrIncrementLength <= 0:
-            curr_string += "\tprintf(\"dRetval:%zu\\n%rh**HEPWALTER***\\n\", retval, buf(retval, 20));\n\n"
+            curr_string += "\tprintf(\"dRetval:%zu\\n%r**HEPWALTER***\\n\", retval, buf(retval, 20));\n\n"
         else:
-            curr_string += "\tprintf(\"dRetval:%zu\\n%rh\", retval, buf(retval, 20));\n"
+            curr_string += "\tprintf(\"dRetval:%zu\\n%r\", retval, buf(retval, 20));\n"
 
 
     while(currPtrIncrementLength):
@@ -150,9 +154,9 @@ def retval_string(type_args ,ptrIncrementLength, incrementAmount):
         
         if currPtrIncrementLength == 1:
             #if type_args.lower() == "source":
-            curr_string += "\tprintf(\"%rh**HEPWALTER***\\n\", buf(retval+" + str(increment) + ", 20));\n\n"
+            curr_string += "\tprintf(\"%r**HEPWALTER***\\n\", buf(retval+" + str(increment) + ", 20));\n\n"
         else:
-            curr_string += "\tprintf(\"%rh\", buf(retval+" + str(increment) + ", 20));\n"
+            curr_string += "\tprintf(\"%r\", buf(retval+" + str(increment) + ", 20));\n"
         
         
         currPtrIncrementLength -= 1
@@ -186,7 +190,7 @@ if __name__ == "__main__":
     replace_in_file("final_run_again.bt", "final_run_again.bt", "PID", str(pid))
     replace_in_file("final_run_again.bt", "final_run_again.bt","BUFFLENGTH", str(bufflength))
 
-    source_args_string = args_string("source", 3, ptr_incrementAmount)
+    source_args_string = args_string("source", 1, ptr_incrementAmount)
     destination_args_string = args_string("destination", 4, ptr_incrementAmount)
     source_retval_string = retval_string("source", 3, ptr_incrementAmount)
     destination_retval_string = retval_string("destination", 4, ptr_incrementAmount)
