@@ -1,7 +1,7 @@
 import subprocess
 import json
 
-#container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
+#container_name = "socialnetwork_social-graph-mongodb_1"
 container_name = "socialnetwork_social-graph-mongodb_1"
 
 binary = "/usr/bin/mongod"

@@ -104,15 +104,18 @@ class BPFGrep:
                 sys.exit(1)
             if (label == "sArg0"):
                 self.report()
+                self.clear()
+                self.ARGs[label].update(label, buffer_content, ptr_addr, True) 
+
                 break; 
             self.ARGs[label].update(label, buffer_content, ptr_addr, True) 
+    
     
 
     def report(self):
         div_values = self.compare_all_buff()
         max , avg = self.find_max_avg(div_values)
-        self.divergenceList.append({(max, avg)})
-        return
+        self.divergenceList.append((max, avg))
     
     def find_max_avg(self, div_values):
         """
@@ -221,6 +224,7 @@ class BPFGrep:
                 self.stream.read(1)
                 break
         buffer_content = self.clean_tail(buffer_content, max_chars)
+        buffer_content = self.strip_string(buffer_content)
         self._print(buffer_content)
         return buffer_content
 
@@ -233,6 +237,19 @@ class BPFGrep:
         else:
             self._print("Error: The string is shorter than 13 characters.")
             return input_str
+        
+    def strip_string(self, str):
+        str = str.replace('x','')
+        str = str.replace('h','')
+        str = str.replace('\\','')
+        str = str.replace('`','')
+        return str
+
+    def is_zero_string(self, str):
+        for char in str:
+            if char != '0':
+                return False
+        return True
     def find_divergence(self, str1, str2):
         """
         Finds the divergence index of two strings
