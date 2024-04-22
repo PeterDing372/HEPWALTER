@@ -39,6 +39,9 @@ def compare_all_buff(tupleList, div_threshold=3):
                     print("is redundant")
 
 def find_divergence(str1, str2):
+    """
+    Finds the divergence index of two strings
+    """
     min_length = min(len(str1), len(str2))
     for i in range(min_length):
         if str1[i] != str2[i]:

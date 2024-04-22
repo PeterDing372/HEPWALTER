@@ -8,10 +8,16 @@ class ArgClass:
     def __str__(self):
         # This method allows the class instance to be printed in a user-friendly format
         return f"ArgClass(Label: {self.label}, Buffer: {self.buffer_content}, Pointer Address: {self.ptr_addr})"
-    def update(self, label, buffer_content, ptr_addr):
+    def update(self, label, buffer_content, ptr_addr, valid):
         self.label = label
         self.buffer_content = buffer_content
         self.ptr_addr = ptr_addr
+        self._valid = valid
+    def clear(self):
+        self.label = None  
+        self.buffer_content = None  
+        self.ptr_addr = None  
+        self._valid = False
 
     # Valid control
     def set_valid(self):
