@@ -9,9 +9,9 @@ def run_bpftrace_for_duration(bpffile="final_run.bt"):
         start_time = time.time()
         command = f"sudo bpftrace {bpffile}"
         BPFGrepObj = BPFGrep(command, verbose=True)
-        print("read_one_arg")
-        BPFGrepObj.read_one_arg()
-        return "regular done"
+        print("start read")
+        BPFGrepObj.read_one_cluster()
+        return "done"
 
         # # Read and print output line by line
         # for i, line in enumerate(process.stdout):

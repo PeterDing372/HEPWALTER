@@ -1,7 +1,9 @@
 import sys
 import subprocess
+from ArgClass import ArgClass
 
 class BPFGrep:
+    
     def __init__(self, command, verbose=False):
         self.verbose = verbose  # Class attribute to control printing
         try:
@@ -19,6 +21,23 @@ class BPFGrep:
         except Exception as e:
             print("Failed to start subprocess:", str(e))
             sys.exit(1)
+        # Define all argument attributes
+        self.args = {
+                "sArg0": ArgClass(),
+                "sArg0": ArgClass(),
+                "sArg2": ArgClass(),
+                "sArg3": ArgClass(),
+                "sArg4": ArgClass(),
+                "sArg5": ArgClass(),
+                "sRetVal": ArgClass(),
+                "dArg0": ArgClass(),
+                "dArg1": ArgClass(),
+                "dArg2": ArgClass(),
+                "dArg3": ArgClass(),
+                "dArg4": ArgClass(),
+                "dArg5": ArgClass(),
+                "dRetval": ArgClass()
+        }
 
     def verify_initial_output(self):
         """Reads the first line of output from the subprocess 
@@ -52,7 +71,27 @@ class BPFGrep:
             self.process.stderr.close()
             self.process.wait()  # Wait for the process to terminate
 
+    def read_one_cluster(self):
+        """
+        Read one cluster of argument information
+        """
+        while True:
+            label, buffer_content, ptr_addr = self.read_one_arg()
+            if (label == "sArg0"):
+                self.clear()
+        # TODO
+    
+    #
+    def clear():
+        """
+        Clears all ArgClass attributes one cluster of argument information
+        """
+        return; 
+
+
+
     def read_one_arg(self):
+        self._print("---------- start one set of read ----------")
         label = self.read_arg_label()
         ptr_addr = self.read_arg_ptr()
         buffer_content = self.read_buffer_content()
