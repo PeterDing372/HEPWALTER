@@ -6,7 +6,7 @@ import argparse
 #parser.add_argument()
 
 #container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
-container_name = "socialnetwork_social-graph-mongodb_1"
+container_name = "socialnetwork_user-timeline-mongodb_1"
 
 binary = "/usr/bin/mongod"
 # source unmangled name
@@ -17,6 +17,7 @@ bufflength = 20
 #ptr_incrementlength = 1
 ptr_incrementAmount = 20
 
+#Don't modify these names
 mangledfilename = "manglednames.txt"
 unmangledfilename = "unmangledmanglednames.txt"
 
@@ -37,6 +38,13 @@ pid = get_container_pid(container_name)
 
 print(f"container name is {container_name} and PID is {pid}")
 
+
+def create_objdumps(path_to_binary):
+
+    subprocess.check_output(['sudo', 'objdump', '-CT', path_to_binary, '>', 'unmangledmanglednames.txt'])
+    subprocess.check_output(['sudo', 'objdump', '-T', path_to_binary, '>', 'manglednames.txt'])
+
+    return
 
 def find_mangled_name(objdump_T_output, objdump_CT_output, unmangled_name):
     mangled_name = None
@@ -176,6 +184,11 @@ def retval_string(type_args ,ptrIncrementLength, incrementAmount):
 
 
 if __name__ == "__main__":
+
+    path_to_binary = f"/proc/{pid}/root/{binary}"
+
+    create_objdumps(path_to_binary)
+
     with open(mangledfilename, "r") as f:
         objdump_T_output = f.read()
 
