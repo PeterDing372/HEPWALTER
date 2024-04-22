@@ -14,9 +14,36 @@ class BPFGrep:
                 text=True
             )
             self.stream = self.process.stdout
+            print("verify")
+            self.verify_initial_output()
         except Exception as e:
             print("Failed to start subprocess:", str(e))
             sys.exit(1)
+
+    def verify_initial_output(self):
+        """Reads the first line of output from the subprocess 
+            and verifies it is \"Attaching 4 probes...\""""
+        try:
+            # Read the first line from the output
+            initial_output = self.stream.readline()
+            if self.verbose:
+                print(f"Initial output: {initial_output}")
+            # Check if the output matches the expected string
+            if "Attaching 4 probes..." not in initial_output:
+                error_message = f"Unexpected initial output. Expected 'Attaching 4 probes...', got '{initial_output}'"
+                print(error_message)
+                # raise ValueError(error_message)
+        except ValueError as e:
+            print(f"Error: {e}")
+            self.cleanup()
+            sys.exit(1)
+
+    def cleanup(self):
+        if self.process:
+            self.process.stdout.close()
+            self.process.stderr.close()
+            self.process.terminate()  # Ensure the process is terminated
+            self.process.wait()  # Wait for the process to terminate
 
     def __del__(self):
         # Ensure to close the subprocess and its streams
@@ -29,6 +56,7 @@ class BPFGrep:
         label = self.read_arg_label()
         ptr_addr = self.read_arg_ptr()
         buffer_content = self.read_buffer_content()
+
         return label, buffer_content, ptr_addr
 
     # ---------- Helper Functions Below ----------
@@ -40,7 +68,7 @@ class BPFGrep:
             if ch == ':' or not ch:
                 break
             arg_type += ch
-        self._print(arg_type)
+        self._print("arg type: " + arg_type)
         return arg_type
 
     def read_arg_ptr(self):
@@ -50,7 +78,7 @@ class BPFGrep:
             if ch == '\n' or not ch:
                 break
             arg_ptr += ch
-        self._print(arg_ptr)
+        self._print("arg ptr: "+ arg_ptr)
         return self.to_int(arg_ptr)
 
     def to_int(self, input_str):
@@ -61,16 +89,21 @@ class BPFGrep:
             return 0
 
     def read_buffer_content(self):
+        self._print("read buffer content:")
         buffer_content = ""
         last13_chars = ""
-        max_chars = 13
+        max_chars = 14
+        count = 0
 
         while True:
+            count+=1
             ch = self.stream.read(1)
             if not ch:
                 break
             buffer_content += ch
             last13_chars += ch
+            # print(f"{last13_chars} {count}")
+            # print(f"{ch}")
 
             if len(last13_chars) > max_chars:
                 last13_chars = last13_chars[1:]
@@ -82,7 +115,7 @@ class BPFGrep:
         return buffer_content
 
     def is_buffer_end(self, input_str):
-        return input_str == "**HELALTER***"
+        return input_str == "**HEPWALTER***"
 
     def clean_tail(self, input_str, num_chars_to_remove):
         if len(input_str) >= num_chars_to_remove:

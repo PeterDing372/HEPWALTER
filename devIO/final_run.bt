@@ -1,0 +1,111 @@
+
+// Source Args
+uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16OperationContextEE11constructAtIN5boost8optionalINS_9BSONArrayEEEEEvPv
+{
+
+	printf("sArg0:%zu\n%rh", arg0, buf(arg0, 20));
+	printf("%rh", buf(arg0+20, 20));
+	printf("%rh", buf(arg0+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg0+60, 20));
+
+	printf("sArg1:%zu\n%rh", arg1, buf(arg1, 20));
+	printf("%rh", buf(arg1+20, 20));
+	printf("%rh", buf(arg1+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg1+60, 20));
+
+	printf("sArg2:%zu\n%rh", arg2, buf(arg2, 20));
+	printf("%rh", buf(arg2+20, 20));
+	printf("%rh", buf(arg2+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg2+60, 20));
+
+	printf("sArg3:%zu\n%rh", arg3, buf(arg3, 20));
+	printf("%rh", buf(arg3+20, 20));
+	printf("%rh", buf(arg3+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg3+60, 20));
+
+	printf("sArg4:%zu\n%rh", arg4, buf(arg4, 20));
+	printf("%rh", buf(arg4+20, 20));
+	printf("%rh", buf(arg4+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg4+60, 20));
+
+	printf("sArg5:%zu\n%rh", arg5, buf(arg5, 20));
+	printf("%rh", buf(arg5+20, 20));
+	printf("%rh", buf(arg5+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg5+60, 20));
+
+
+
+   
+}
+
+// Source Retval
+uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo18DecorationRegistryINS_16OperationContextEE11constructAtIN5boost8optionalINS_9BSONArrayEEEEEvPv
+{
+
+	printf("sRetVal:%zu\n%rh", retval, buf(retval, 20));
+	printf("%rh", buf(retval+20, 20));
+	printf("%rh", buf(retval+40, 20));
+	printf("%rh**HEPWALTER***\n", buf(retval+60, 20));
+
+
+
+   
+}
+
+// Destination Args
+uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo16OperationContextC1EPNS_6ClientEj
+{
+
+	printf("dArg0:%zu\n%rh", arg0, buf(arg0, 20));
+	printf("%rh", buf(arg0+20, 20));
+	printf("%rh", buf(arg0+40, 20));
+	printf("%rh", buf(arg0+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg0+80, 20));
+
+	printf("dArg1:%zu\n%rh", arg1, buf(arg1, 20));
+	printf("%rh", buf(arg1+20, 20));
+	printf("%rh", buf(arg1+40, 20));
+	printf("%rh", buf(arg1+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg1+80, 20));
+
+	printf("dArg2:%zu\n%rh", arg2, buf(arg2, 20));
+	printf("%rh", buf(arg2+20, 20));
+	printf("%rh", buf(arg2+40, 20));
+	printf("%rh", buf(arg2+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg2+80, 20));
+
+	printf("dArg3:%zu\n%rh", arg3, buf(arg3, 20));
+	printf("%rh", buf(arg3+20, 20));
+	printf("%rh", buf(arg3+40, 20));
+	printf("%rh", buf(arg3+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg3+80, 20));
+
+	printf("dArg4:%zu\n%rh", arg4, buf(arg4, 20));
+	printf("%rh", buf(arg4+20, 20));
+	printf("%rh", buf(arg4+40, 20));
+	printf("%rh", buf(arg4+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg4+80, 20));
+
+	printf("dArg5:%zu\n%rh", arg5, buf(arg5, 20));
+	printf("%rh", buf(arg5+20, 20));
+	printf("%rh", buf(arg5+40, 20));
+	printf("%rh", buf(arg5+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(arg5+80, 20));
+
+
+
+}
+
+// Destination Retval
+uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo16OperationContextC1EPNS_6ClientEj
+{
+
+	printf("dRetval:%zu\n%rh", retval, buf(retval, 20));
+	printf("%rh", buf(retval+20, 20));
+	printf("%rh", buf(retval+40, 20));
+	printf("%rh", buf(retval+60, 20));
+	printf("%rh**HEPWALTER***\n", buf(retval+80, 20));
+
+
+
+}

@@ -71,7 +71,7 @@ class BPFGrep:
         return buffer_content
 
     def is_buffer_end(self, input_str):
-        return input_str == "**HELALTER***"
+        return input_str == "**HEPWALTER***"
 
     def clean_tail(self, input_str, num_chars_to_remove):
         if len(input_str) >= num_chars_to_remove:
