@@ -1,0 +1,407 @@
+Parsing Proto
+loading symbolize
+loading ip_to_func_name.pkl
+0: ('snappy::internal::CompressFragment(char const*, unsigned long, char*, unsigned short*, int)', '??', 0.9965042023642318, 3348812247.0)
+compress -> application_logic
+1: ('__nss_passwd_lookup', 'snappy::internal::WorkingMemory::GetHashTable(unsigned long, int*)', 0.5987259661595193, 1273935554.0)
+c_libraries -> compress
+2: ('', '', 0.9180263512448573, 580971816.0)
+application_logic -> application_logic
+3: ('__nss_passwd_lookup', '__libc_calloc', 0.13203887225428765, 280944912.0)
+c_libraries -> mem
+4: ('__wt_checksum_hw', '__wt_log_write', 0.9954345534813791, 97107190.0)
+application_logic -> kernel
+5: ('__nss_passwd_lookup', '', 0.03611492157769042, 76843306.0)
+c_libraries -> application_logic
+6: ('tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)', 'tcmalloc::PageHeap::RemoveFromFreeList(tcmalloc::Span*)', 0.9321708952143584, 58943869.0)
+mem -> mem
+7: ('__nss_passwd_lookup', 'std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 0.026392830735494047, 56157186.0)
+c_libraries -> c_libraries
+8: ('__nss_passwd_lookup', '__libc_realloc', 0.022284351429196613, 47415394.0)
+c_libraries -> mem
+9: ('(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', '__libc_realloc', 0.4077238943361208, 45918320.0)
+mem -> mem
+10: ('__nss_passwd_lookup', 'mongo::find_and_modify::(anonymous namespace)::appendValue(boost::optional<mongo::BSONObj> const&, mongo::BSONObjBuilder*)', 0.021482778947885934, 45709853.0)
+c_libraries -> application_logic
+11: ('__nss_passwd_lookup', 'mongo::BSONObj::copy() const', 0.0210267189042741, 44739474.0)
+c_libraries -> mem
+12: ('__nss_passwd_lookup', 'mongo::BSONObjBuilder::appendAs(mongo::BSONElement const&, mongo::StringData)', 0.020167323676092714, 42910901.0)
+c_libraries -> serialization
+13: ('__nss_passwd_lookup', '__wt_struct_pack', 0.019617100516793246, 41740167.0)
+c_libraries -> application_logic
+14: ('__nss_passwd_lookup', '__wt_row_modify', 0.019082109453420686, 40601843.0)
+c_libraries -> application_logic
+15: ('(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 'tcmalloc::PageHeap::New(unsigned long)', 0.32112996465067883, 36166015.0)
+mem -> mem
+16: ('__nss_passwd_lookup', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONObjBuilder>(unsigned int, mongo::BSONObjBuilder*, mongo::StringData const*) const', 0.016390003106731894, 34873730.0)
+c_libraries -> kernel
+17: ('__nss_passwd_lookup', 'snappy::internal::CompressFragment(char const*, unsigned long, char*, unsigned short*, int)', 0.013594701542549749, 28926044.0)
+c_libraries -> compress
+18: ('mongo::BSONObjBuilder::appendAs(mongo::BSONElement const&, mongo::StringData)', '??', 0.8504193396372866, 27664915.0)
+serialization -> application_logic
+19: ('__nss_passwd_lookup', '__wt_log_fill', 0.011440552311606076, 24342566.0)
+c_libraries -> application_logic
+20: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::ByteArraySource::Available() const', 0.4819043989954572, 24038641.0)
+compress -> compress
+21: ('', 'snappy::internal::CompressFragment(char const*, unsigned long, char*, unsigned short*, int)', 0.03477878479953225, 22009710.0)
+application_logic -> compress
+22: ('__nss_passwd_lookup', 'snappy::UncheckedByteArraySink::Append(char const*, unsigned long)', 0.010145928493680931, 21587938.0)
+c_libraries -> compress
+23: ('tcmalloc::NewSpan(unsigned long, unsigned long)', 'tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)', 0.9998942532178513, 21511382.0)
+mem -> mem
+24: ('__config_next', '__config_getraw.constprop.1', 0.9091533050729547, 21164608.0)
+application_logic -> application_logic
+25: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 0.5840780563785071, 18671371.0)
+application_logic -> application_logic
+26: ('__nss_passwd_lookup', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.008570661415480945, 18236173.0)
+c_libraries -> application_logic
+27: ('__libc_realloc', '(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 0.7256873624667776, 17984125.0)
+mem -> mem
+28: ('mongo::mutablebson::Element::rightSibling(unsigned long) const', 'mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 0.3868135976736599, 17503101.0)
+application_logic -> application_logic
+29: ('mongo::mutablebson::Element::rightSibling(unsigned long) const', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.35589297601566217, 16103960.0)
+application_logic -> application_logic
+30: ('mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 0.5474480937675112, 15687989.0)
+serialization -> kernel
+31: ('__wt_struct_pack', '??', 0.9731749563433363, 14564188.0)
+application_logic -> application_logic
+32: ('tcmalloc::DLL_Remove(tcmalloc::Span*)', 'tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)', 0.9579005818404911, 14311369.0)
+mem -> mem
+33: ('mongo::mutablebson::Element::getType() const', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.8217909895674198, 13956515.0)
+serialization -> application_logic
+34: ('(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 'tcmalloc::allocate_full_cpp_throw_oom(unsigned long)', 0.11413548770019293, 12854066.0)
+mem -> mem
+35: ('__nss_passwd_lookup', 'mongo::mutablebson::Element::countChildren() const', 0.006005531813159852, 12778234.0)
+c_libraries -> serialization
+36: ('mongo::DecimalCounter<unsigned int>::operator++()', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 0.9967809596579554, 12124408.0)
+application_logic -> kernel
+37: ('__wt_row_search', '__wt_page_in_func', 0.6896146448388115, 11515095.0)
+application_logic -> application_logic
+38: (None, None, 0.6040975755569341, 11276919.0)
+application_logic -> application_logic
+39: ('snappy::internal::CompressFragment(char const*, unsigned long, char*, unsigned short*, int)', '', 0.0032268912698223636, 10844162.0)
+compress -> application_logic
+40: ('mongo::find_and_modify::serializeUpsert(unsigned long, boost::optional<mongo::BSONObj> const&, bool, mongo::BSONObj const&, mongo::BSONObjBuilder*)', 'mongo::BSONObjBuilderValueStream::BSONObjBuilderValueStream(mongo::BSONObjBuilder*)', 0.5857957897107346, 10280135.0)
+application_logic -> application_logic
+41: ('mongo::mutablebson::Element::getFieldName() const', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.7949293556569368, 10022707.0)
+application_logic -> application_logic
+42: ('mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 'mongo::mutablebson::Element::hasChildren() const', 0.41260844049521245, 9979474.0)
+application_logic -> application_logic
+43: ('__wt_row_modify', '__wt_calloc', 0.7370971079486256, 9753008.0)
+application_logic -> application_logic
+44: ('__wt_search_insert', '__wt_row_search', 0.9978684422907896, 9327699.0)
+application_logic -> application_logic
+45: ('__wt_btcur_insert', '__wt_row_modify', 0.9903093243848703, 9199322.0)
+application_logic -> application_logic
+46: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::UncheckedByteArraySink::Append(char const*, unsigned long)', 0.1806615586322868, 9011867.0)
+compress -> compress
+47: ('mongo::mutablebson::Element::countChildren() const', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.41883271603394295, 9008791.0)
+serialization -> application_logic
+48: ('void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 'mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 0.4822577523294593, 8451407.0)
+kernel -> serialization
+49: ('mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.2897703975680557, 8303827.999999999)
+serialization -> application_logic
+50: ('__wt_cursor_set_valuev', '__wt_cursor_set_value', 1.0, 8250057.0)
+application_logic -> application_logic
+51: ('(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 'tcmalloc::allocate_full_malloc_oom(unsigned long)', 0.07267637980074713, 8184895.0)
+mem -> mem
+52: ('__nss_passwd_lookup', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.0037832376347023745, 8049761.0)
+c_libraries -> application_logic
+53: ('__wt_log_write', '__wt_rduppo2', 0.6783258150966283, 8034752.999999999)
+kernel -> application_logic
+54: ('(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', '__libc_calloc', 0.07109039835833272, 8006279.999999999)
+mem -> mem
+55: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 0.30706322678012127, 7979801.0)
+application_logic -> serialization
+56: ('void mongo::mutablebson::Document::Impl::writeChildren<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*) const', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 0.9660640760485107, 7872973.0)
+kernel -> kernel
+57: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::UncheckedByteArraySink::GetAppendBuffer(unsigned long, char*)', 0.15222642896691438, 7593449.0)
+compress -> compress
+58: ('(anonymous namespace)::do_free_pages(tcmalloc::Span*, void*) [clone .isra.23]', 'tcmalloc::PageHeap::Delete(tcmalloc::Span*)', 0.6121231593030149, 7558064.0)
+mem -> mem
+59: ('tcmalloc::DLL_Prepend(tcmalloc::Span*, tcmalloc::Span*)', 'tcmalloc::PageHeap::PrependToFreeList(tcmalloc::Span*)', 0.9999872461051955, 7448610.0)
+mem -> mem
+60: (None, '', 0.39590242444306595, 7390461.0)
+application_logic -> application_logic
+61: ('__curfile_insert', '__wt_btcur_insert', 0.9751250188085566, 7238824.0)
+application_logic -> application_logic
+62: ('mongo::mutablebson::Element::parent() const', 'mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 0.9956707919822102, 7215909.0)
+application_logic -> application_logic
+63: ('snappy::internal::WorkingMemory::GetHashTable(unsigned long, int*)', '??', 0.7865627924095578, 7172040.0)
+compress -> application_logic
+64: ('__wt_cursor_get_valuev', '__wt_cursor_get_value', 0.9998629988516259, 6568388.0)
+application_logic -> application_logic
+65: ('', '__nss_passwd_lookup', 0.010318089661160356, 6529790.0)
+application_logic -> c_libraries
+66: ('', 'base::internal::SpinLockWake(int volatile*, bool)', 0.009956080563302255, 6300693.0)
+application_logic -> sync
+67: ('mongo::find_and_modify::serializeUpsert(unsigned long, boost::optional<mongo::BSONObj> const&, bool, mongo::BSONObj const&, mongo::BSONObjBuilder*)', 'mongo::BSONObjBuilderValueStream::endField(mongo::StringData)', 0.35450989594397586, 6221297.0)
+application_logic -> serialization
+68: ('mongo::BasicBufBuilder<mongo::SharedBufferAllocator>::grow_reallocate(int)', 'mongo::mongoRealloc(void*, unsigned long)', 0.9542241228761253, 5589718.0)
+c_libraries -> mem
+69: ('std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 'mongo::mutablebson::Element::countChildren() const', 0.28532624031859105, 5566257.0)
+c_libraries -> serialization
+70: ('snappy::RawCompress(char const*, unsigned long, char*, unsigned long*)', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 0.8523928799242902, 5343824.0)
+compress -> compress
+71: ('__GI___pthread_mutex_trylock', 'mongo::latch_detail::Mutex::lock()', 0.8971248857140632, 5300596.0)
+sync -> sync
+72: ('mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 'mongo::mutablebson::Element::leftChild() const', 0.21102188982476283, 5103840.0)
+application_logic -> application_logic
+73: ('mongo::mutablebson::Element::rightSibling(unsigned long) const', 'std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 0.11239496722236113, 5085810.0)
+application_logic -> c_libraries
+74: ('mongo::mutablebson::Element::countChildren() const', 'std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 0.23525941033271125, 5060261.0)
+serialization -> c_libraries
+75: ('__wt_page_in_func', '__wt_row_search', 0.6424599807608491, 4982290.0)
+application_logic -> application_logic
+76: ('mongo::mutablebson::Element::hasChildren() const', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.7867756379263533, 4639398.0)
+application_logic -> application_logic
+77: ('void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 'void mongo::mutablebson::Document::Impl::writeChildren<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*) const', 0.25675476419867127, 4499542.0)
+kernel -> kernel
+78: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::mutablebson::Element::getType() const', 0.17234049389542697, 4478696.0)
+application_logic -> serialization
+79: ('__wt_log_slot_join', '__wt_log_write', 0.8794002127370824, 4393341.0)
+application_logic -> kernel
+80: ('__wt_btcur_search_near', '__wt_session_gen', 0.5731318164537819, 4322218.0)
+application_logic -> application_logic
+81: ('std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 'mongo::mutablebson::Document::Impl::makeNewRep(unsigned int*)', 0.21824065998253572, 4257525.0)
+c_libraries -> application_logic
+82: ('std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.21559000625115496, 4205815.0)
+c_libraries -> application_logic
+83: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.15970433460567654, 4150314.0)
+application_logic -> application_logic
+84: ('mongo::mutablebson::Element::countChildren() const', 'mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 0.19025651344382394, 4092281.0000000005)
+serialization -> application_logic
+85: ('snappy::UncheckedByteArraySink::Append(char const*, unsigned long)', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 0.5513928426472529, 3961451.0)
+compress -> compress
+86: ('__wt_cursor_cache_get', '??', 0.8028075333312361, 3929950.0)
+application_logic -> application_logic
+87: ('tc_newarray', 'boost::intrusive_ptr<mongo::DocumentStorage> mongo::make_intrusive<mongo::DocumentStorage, mongo::BSONObj const&, bool const&, bool const&, void>(mongo::BSONObj const&, bool const&, bool const&) [clone .isra.116]', 0.1561893708825982, 3920570.0)
+mem -> application_logic
+88: ('snappy::UncheckedByteArraySink::GetAppendBuffer(unsigned long, char*)', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 1.0, 3886893.0)
+compress -> compress
+89: ('tcmalloc::allocate_full_cpp_throw_oom(unsigned long)', '(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 0.9191989415818936, 3831667.0)
+mem -> mem
+90: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::mutablebson::Element::getFieldName() const', 0.14576120005456472, 3787967.0)
+application_logic -> application_logic
+91: ('', None, 0.0057598677103149025, 3645125.0)
+application_logic -> application_logic
+92: ('__libc_malloc', 'mongo::mongoMalloc(unsigned long)', 0.9752093428214166, 3641380.0)
+mem -> mem
+93: ('mongo::BSONObjBuilder::appendAs(mongo::BSONElement const&, mongo::StringData)', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 0.10751804975637017, 3497660.0)
+serialization -> kernel
+94: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::BSONDepth::getMaxDepthForUserStorage()', 0.10802961393023042, 3453410.0)
+application_logic -> application_logic
+95: ('mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 'mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 0.1370059983529523, 3313669.0000000005)
+application_logic -> serialization
+96: ('snappy_compress', 'snappy::MaxCompressedLength(unsigned long)', 0.7975133820283036, 3275984.0)
+compress -> compress
+97: ('SpinLock::SlowLock()', '(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 0.3822690865844088, 3238698.0)
+sync -> mem
+98: ('snappy::UncheckedByteArraySink::Append(char const*, unsigned long)', '??', 0.44860715735274714, 3222993.0)
+compress -> application_logic
+99: ('mongo::mutablebson::Element::rightSibling(unsigned long) const', 'mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 0.0704819899894465, 3189271.0)
+application_logic -> application_logic
+100: ('__wt_row_modify', '??', 0.23903957224974126, 3162887.0)
+application_logic -> application_logic
+101: ('tcmalloc::PageHeap::CheckAndHandlePreMerge(tcmalloc::Span*, tcmalloc::Span*)', 'tcmalloc::PageHeap::MergeIntoFreeList(tcmalloc::Span*)', 0.8250495121837829, 3105672.0)
+mem -> mem
+102: ('__curfile_search_near', '__wt_btcur_search_near', 0.9435758842483961, 3091984.0)
+application_logic -> application_logic
+103: ('__wt_hazard_set_func', '__wt_page_in_func', 1.0, 3070355.0)
+application_logic -> application_logic
+104: ('mongo::BSONElement::computeSize(signed char, char const*, int)', 'mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 0.27922523019280826, 3047465.0)
+application_logic -> application_logic
+105: ('tc_newarray', 'std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 0.12135062013303806, 3046069.0)
+mem -> c_libraries
+106: ('mongo::BSONElement::embeddedObject() const', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.9665117090816779, 3045865.0)
+c_libraries -> application_logic
+107: ('SpinLock::SlowLock()', '(anonymous namespace)::NowMonotonic()', 0.35946642109774457, 3045507.0)
+sync -> application_logic
+108: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::internal::CompressFragment(char const*, unsigned long, char*, unsigned short*, int)', 0.06078196456226724, 3031962.0)
+compress -> compress
+109: ('mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.10495038870307544, 3007519.0)
+serialization -> application_logic
+110: ('mongo::find_and_modify::(anonymous namespace)::appendValue(boost::optional<mongo::BSONObj> const&, mongo::BSONObjBuilder*)', 'mongo::BasicBufBuilder<mongo::SharedBufferAllocator>::grow_reallocate(int)', 0.8155776181982051, 2996172.0)
+application_logic -> c_libraries
+111: ('std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', '??', 0.15302473627379393, 2985267.0)
+c_libraries -> application_logic
+112: ('__wt_row_search', '__wt_search_insert', 0.17696551577928896, 2954947.0)
+application_logic -> application_logic
+113: ('__libc_realloc', '__realloc_func', 0.11911741954727656, 2951991.0)
+mem -> application_logic
+114: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::mutablebson::Element::countChildren() const', 0.11326844440699052, 2943562.0)
+application_logic -> serialization
+115: ('__wt_cursor_set_keyv', '__wt_cursor_set_key', 0.5591545369062246, 2916143.0)
+application_logic -> application_logic
+116: ('__wt_btcur_search_near', '__cursor_reset', 0.3866556395408122, 2915926.0)
+application_logic -> application_logic
+117: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::mutablebson::Element::hasChildren() const', 0.09078190109109469, 2902048.0)
+application_logic -> application_logic
+118: ('boost::intrusive_ptr<mongo::DocumentStorage> mongo::make_intrusive<mongo::DocumentStorage, mongo::BSONObj const&, bool const&, bool const&, void>(mongo::BSONObj const&, bool const&, bool const&) [clone .isra.116]', 'tc_newarray', 0.9042457234790867, 2845088.0)
+application_logic -> mem
+119: ('snappy::ByteArraySource::Available() const', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 1.0, 2828554.0)
+compress -> compress
+120: ('mongo::mutablebson::Element::getType() const', 'mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 0.16645764449689152, 2826958.0)
+serialization -> application_logic
+121: ('', '__sched_yield', 0.0043810579721217935, 2772547.0000000005)
+application_logic -> application_logic
+122: ('__wt_page_in_func', '__wt_hazard_set_func', 0.35651229784062455, 2764760.0)
+application_logic -> application_logic
+123: ('__realloc_func', '__libc_realloc', 0.7921210119574521, 2655032.0)
+application_logic -> mem
+124: ('mongo::Document::getOwned() const', 'mongo::DocumentStorage::clone() const', 0.8836981137371677, 2644494.0)
+application_logic -> application_logic
+125: ('mongo::BSONElement::computeSize(signed char, char const*, int)', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.2337152555299829, 2550769.0)
+application_logic -> application_logic
+126: ('mongo::mutablebson::Element::getFieldName() const', 'mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 0.20065601236138197, 2529931.0)
+application_logic -> application_logic
+127: ('__wt_btcur_search', '__wt_session_gen', 0.4900724340001051, 2489739.0)
+application_logic -> application_logic
+128: ('mongo::BSONElement::computeSize(signed char, char const*, int)', 'mongo::mutablebson::Element::countChildren() const', 0.22662005865308998, 2473332.0)
+application_logic -> serialization
+129: ('__libc_realloc', '??', 0.09958036806587826, 2467820.0)
+mem -> application_logic
+130: ('mongo::BSONElement::BSONElement(char const*, int, int, mongo::BSONElement::CachedSizeTag)', 'mongo::BSONElement::computeSize(signed char, char const*, int)', 0.09407074212837449, 2444662.0)
+application_logic -> application_logic
+131: ('__curfile_search', '__wt_btcur_search', 0.5362007418566118, 2351355.0)
+application_logic -> application_logic
+132: ('mongo::mutablebson::Element::countChildren() const', '??', 0.10898188047374152, 2344122.0)
+serialization -> application_logic
+133: ('mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 'mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 0.0962770420584276, 2328586.0)
+application_logic -> application_logic
+134: ('std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 'tc_newarray', 0.1188128495450292, 2317848.0)
+c_libraries -> mem
+135: ('void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 'mongo::BSONObjBuilder::appendAs(mongo::BSONElement const&, mongo::StringData)', 0.1320787360993087, 2314636.0)
+kernel -> serialization
+136: ('snappy::ByteArraySource::Skip(unsigned long)', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 1.0, 2234689.0)
+compress -> compress
+137: ('__nss_passwd_lookup', '__wt_config_get.part.0', 0.0010474216114480012, 2228645.0)
+c_libraries -> application_logic
+138: ('void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONArrayBuilder>(unsigned int, mongo::BSONArrayBuilder*, mongo::StringData const*) const', 'mongo::DecimalCounter<unsigned int>::operator++()', 0.1260621313910198, 2209197.0)
+kernel -> application_logic
+139: ('mongo::write_stage_common::ensureStillMatches(mongo::Collection const*, mongo::OperationContext*, mongo::WorkingSet*, unsigned long, mongo::CanonicalQuery const*)', 'mongo::UpdateStage::doWork(unsigned long*)', 0.9924875638418275, 2180915.0)
+kernel -> application_logic
+140: ('mongo::mutablebson::Element::rightSibling(unsigned long) const', '??', 0.04761311331855864, 2154467.0)
+application_logic -> application_logic
+141: ('mongo::mutablebson::Document::Impl::makeNewRep(unsigned int*)', 'std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> >::_M_insert_rval(__gnu_cxx::__normal_iterator<mongo::mutablebson::(anonymous namespace)::ElementRep const*, std::vector<mongo::mutablebson::(anonymous namespace)::ElementRep, std::allocator<mongo::mutablebson::(anonymous namespace)::ElementRep> > >, mongo::mutablebson::(anonymous namespace)::ElementRep&&) [clone .constprop.227]', 0.718284314429661, 2150090.0)
+application_logic -> c_libraries
+142: ('__wt_row_search', '__wt_btcur_search', 0.12736912716227441, 2126793.0)
+application_logic -> application_logic
+143: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::mutablebson::Element::getType() const', 0.06590003213601119, 2106643.0)
+application_logic -> serialization
+144: ('__config_next', '__wt_config_next', 0.09019375912794582, 2099663.0)
+application_logic -> application_logic
+145: ('__wt_cursor_set_key', '__wt_cursor_set_keyv', 0.9424894746873117, 2086847.0)
+application_logic -> application_logic
+146: ('tcmalloc::allocate_full_malloc_oom(unsigned long)', '(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 0.9252143351425485, 2067038.0)
+mem -> mem
+147: ('__session_open_cursor', '__wt_op_timer_start', 0.8705530569061672, 2048454.0)
+application_logic -> application_logic
+148: ('__wt_struct_packv', '__wt_cursor_set_keyv', 0.9993515838986993, 2000503.0)
+application_logic -> application_logic
+149: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::ByteArraySource::Peek(unsigned long*)', 0.03970030186682557, 1980354.0)
+compress -> compress
+150: ('mongo::intrusive_ptr_release(mongo::RefCountable const*)', 'mongo::Document::getOwned() const', 0.7639696564586432, 1974406.9999999998)
+c_libraries -> application_logic
+151: ('__curfile_search', 'int mongo::wiredTigerPrepareConflictRetry<mongo::WiredTigerRecordStore::updateRecord(mongo::OperationContext*, mongo::RecordId const&, char const*, int)::{lambda()#1}>(mongo::OperationContext*, mongo::WiredTigerRecordStore::updateRecord(mongo::OperationContext*, mongo::RecordId const&, char const*, int)::{lambda()#1}&&)', 0.4493272164140678, 1970396.0)
+application_logic -> application_logic
+152: ('snappy_compression', 'snappy_compress', 0.5707650072488606, 1949961.0)
+compress -> compress
+153: ('snappy::internal::WorkingMemory::GetHashTable(unsigned long, int*)', 'snappy::Compress(snappy::Source*, snappy::Sink*)', 0.21343720759044216, 1946164.0)
+compress -> compress
+154: ('mongo::latch_detail::Mutex::_onQuickLock()', 'mongo::(anonymous namespace)::_mongoInitializerFunction_DiagnosticInfo(mongo::InitializerContext*)::DiagnosticListener::onQuickLock(mongo::latch_detail::Identity const&)', 0.8430335691816324, 1924735.0)
+sync -> application_logic
+155: ('tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)', 'tcmalloc::PageHeap::PrependToFreeList(tcmalloc::Span*)', 0.030196859546217238, 1909435.0)
+mem -> mem
+156: ('__ctype_b_loc', '__wt_struct_pack', 0.8512257201229039, 1898264.0)
+kernel -> application_logic
+157: ('__wt_cursor_valid', '__wt_txn_read.constprop.18', 0.49733159658488385, 1897980.0)
+application_logic -> application_logic
+158: ('??', '??', 0.9142594882261532, 1871523.0)
+application_logic -> application_logic
+159: ('mongo::mutablebson::Element::leftChild() const', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.8481796172888403, 1843867.0)
+application_logic -> application_logic
+160: ('mongo::WiredTigerRecordStore::updateRecord(mongo::OperationContext*, mongo::RecordId const&, char const*, int)', '__wt_cursor_set_value', 0.5816429668126285, 1842617.0)
+application_logic -> application_logic
+161: ('__wt_btcur_search', '__cursor_reset', 0.36039453195046245, 1830930.0)
+application_logic -> application_logic
+162: ('__nss_passwd_lookup', '__config_getraw.constprop.1', 0.0008584844043027578, 1826635.0)
+c_libraries -> application_logic
+163: ('mongo::DocumentStorage::clone() const', 'boost::intrusive_ptr<mongo::DocumentStorage> mongo::make_intrusive<mongo::DocumentStorage, mongo::BSONObj const&, bool const&, bool const&, void>(mongo::BSONObj const&, bool const&, bool const&) [clone .isra.116]', 0.768113456777966, 1809620.0)
+application_logic -> application_logic
+164: ('__wt_cursor_set_value', '__wt_cursor_set_valuev', 0.9152174280148215, 1788506.0)
+application_logic -> application_logic
+165: ('bool mongo::FailPoint::shouldFail<decltype(nullptr)>(decltype(nullptr)&&, mongo::FailPoint::ShouldFailEntryMode)', 'mongo::WiredTigerRecordStore::updateRecord(mongo::OperationContext*, mongo::RecordId const&, char const*, int)', 0.48301483360829256, 1770146.0)
+application_logic -> application_logic
+166: ('', '__pwrite64', 0.0027842261503703155, 1761994.0)
+application_logic -> kernel
+167: ('__wt_cursor_set_keyv', '__wt_struct_sizev', 0.33717570243699657, 1758463.0)
+application_logic -> application_logic
+168: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.05475725424389765, 1750439.0)
+application_logic -> application_logic
+169: ('mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 'mongo::mutablebson::Document::Impl::makeNewRep(unsigned int*)', 0.07173377364860926, 1734975.0000000002)
+application_logic -> application_logic
+170: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::internal::WorkingMemory::GetHashTable(unsigned long, int*)', 0.034768601544029595, 1734348.0)
+compress -> compress
+171: ('__wt_cursor_get_value', '__wt_cursor_get_valuev', 0.9100236229070291, 1708492.0)
+application_logic -> application_logic
+172: ('__wt_struct_sizev', '__wt_cursor_set_keyv', 0.999352458982709, 1702264.0)
+application_logic -> application_logic
+173: ('__libc_calloc', '(anonymous namespace)::do_malloc_pages(tcmalloc::ThreadCache*, unsigned long) [clone .isra.14]', 0.5785174301595627, 1697416.9999999998)
+mem -> mem
+174: ('mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 'mongo::mutablebson::Element::countChildren() const', 0.37619634174246, 1681905.0)
+application_logic -> serialization
+175: ('mongo::BSONElement::computeSize(signed char, char const*, int)', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.1505399073099027, 1642992.9999999998)
+application_logic -> application_logic
+176: ('', '__sendmsg', 0.0025595563487069996, 1619812.0)
+application_logic -> application_logic
+177: ('__nss_passwd_lookup', 'std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::compare(char const*) const', 0.0007589146230321821, 1614776.0)
+c_libraries -> c_libraries
+178: ('__wt_txn_read.constprop.18', '__wt_cursor_valid', 0.9908365376335693, 1599445.0)
+application_logic -> application_logic
+179: ('(anonymous namespace)::do_free_pages(tcmalloc::Span*, void*) [clone .isra.23]', 'SpinLock::SlowLock()', 0.126666873459632, 1563993.0000000002)
+mem -> sync
+180: ('mongo::mutablebson::Document::Impl::getSerializedElement(mongo::mutablebson::(anonymous namespace)::ElementRep const&) const', 'void mongo::mutablebson::Document::Impl::writeElement<mongo::BSONObjBuilder>(unsigned int, mongo::BSONObjBuilder*, mongo::StringData const*) const', 0.054378579326533685, 1558304.0)
+serialization -> kernel
+181: ('', '__libc_recvmsg', 0.0024293293366078558, 1537398.0)
+application_logic -> kernel
+182: ('', '__select', 0.0024112160034400385, 1525935.0)
+application_logic -> application_logic
+183: ('__wt_cursor_valid', '__wt_btcur_search_near', 0.39709883351190817, 1515459.0)
+application_logic -> application_logic
+184: ('mongo::BSONObjBuilderValueStream::endField(mongo::StringData)', 'mongo::find_and_modify::serializeUpsert(unsigned long, boost::optional<mongo::BSONObj> const&, bool, mongo::BSONObj const&, mongo::BSONObjBuilder*)', 0.7016089755759148, 1496774.0)
+serialization -> application_logic
+185: ('mongo::ExpressionContext::~ExpressionContext()', 'free', 0.9485897918540775, 1494212.0)
+application_logic -> mem
+186: ('tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)', 'tcmalloc::PageHeap::New(unsigned long)', 0.023338610122262304, 1475768.0)
+mem -> mem
+187: ('free', 'mongo::OperationContext::~OperationContext()', 0.10458823260837617, 1466053.0)
+mem -> c_libraries
+188: ('SpinLock::SlowLock()', '(anonymous namespace)::do_free_pages(tcmalloc::Span*, void*) [clone .isra.23]', 0.17285237454438282, 1464457.0)
+sync -> mem
+189: ('snappy_compression', '__wt_log_write', 0.42811246578634404, 1462603.0)
+compress -> kernel
+190: ('mongo::latch_detail::Mutex::_onUnlock()', 'mongo::(anonymous namespace)::_mongoInitializerFunction_DiagnosticInfo(mongo::InitializerContext*)::DiagnosticListener::onQuickLock(mongo::latch_detail::Identity const&)', 0.7881848067660994, 1447648.0)
+sync -> application_logic
+191: ('explicit_bzero', '__wt_cursor_cache_get', 0.6586684245220831, 1443844.0)
+c_libraries -> application_logic
+192: ('mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 'mongo::mutablebson::Document::Impl::resolveLeftChild(unsigned int)', 0.31866166743125474, 1424678.0)
+application_logic -> application_logic
+193: ('tc_newarray', 'void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<char*>(char*, char*, std::forward_iterator_tag)', 0.05607713804511527, 1407614.0)
+mem -> c_libraries
+194: ('longest_match', 'deflate_slow', 1.0, 1391874.0)
+c_libraries -> compress
+195: ('tcmalloc::PageHeap::MergeIntoFreeList(tcmalloc::Span*)', 'tcmalloc::PageHeap::CheckAndHandlePreMerge(tcmalloc::Span*, tcmalloc::Span*)', 0.9888185071005854, 1377617.0)
+mem -> mem
+196: ('snappy::Compress(snappy::Source*, snappy::Sink*)', 'snappy::RawCompress(char const*, unsigned long, char*, unsigned long*)', 0.027611535751559668, 1377335.0)
+compress -> compress
+197: ('__nss_passwd_lookup', 'mongo::BSONObjIterator::next() [clone .isra.30]', 0.0006381256532702739, 1357768.0)
+c_libraries -> application_logic
+198: ('mongo::storage_validation::storageValid(mongo::mutablebson::ConstElement, bool, unsigned int)', 'mongo::mutablebson::Element::leftChild() const', 0.04195408970548705, 1341157.0)
+application_logic -> application_logic
+199: ('__wt_update_obsolete_check', '__wt_gen', 0.6967691150434169, 1335705.0)
+application_logic -> application_logic
+200: ('mongo::mutablebson::(anonymous namespace)::getElementOffset(mongo::BSONObj const&, mongo::BSONElement const&)', 'mongo::mutablebson::Element::rightSibling(unsigned long) const', 0.29875412033192145, 1335675.0)
+application_logic -> application_logic
+201: ('mongo::BSONObjBuilder::appendAs(mongo::BSONElement const&, mongo::StringData)', 'mongo::BasicBufBuilder<mongo::SharedBufferAllocator>::grow_reallocate(int)', 0.03951162140868485, 1285349.0)
+serialization -> c_libraries
