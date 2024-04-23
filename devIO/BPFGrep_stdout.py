@@ -1,11 +1,14 @@
 import sys
 import subprocess
+import time
+import math
 from ArgClass import ArgClass
 
 class BPFGrep:
     
     def __init__(self, command=None, verbose=False, useFile=False, fileName=None):
         self.verbose = verbose  # Class attribute to control printing
+        self.max_til_now = 0
         self.divergenceList = []
         # Define all argument attributes
         self.ARGs = {
@@ -47,6 +50,8 @@ class BPFGrep:
                 sys.exit(1)
         self.clear()
         self.verify_initial_output()
+
+
         self.align_cluster()
 
     def terminate_process(self):
@@ -113,6 +118,7 @@ class BPFGrep:
             print("[read_one_cluster]: Re-aligning...")
             self.align_cluster()
         self._read_one_cluster()
+        return time.time()
 
     def _read_one_cluster(self):
         """
@@ -143,8 +149,11 @@ class BPFGrep:
 
     def report(self):
         div_values = self.compare_all_buff()
-        max , avg = self.find_max_avg(div_values)
-        self.divergenceList.append((max, avg))
+        max_val, avg_val = self.find_max_avg(div_values)
+        
+        self.max_til_now = max(max_val, self.max_til_now)
+        print(f"{max_val=} {avg_val=} {self.max_til_now=}")
+        self.divergenceList.append((max_val, avg_val))
     
     def find_max_avg(self, div_values):
         """
