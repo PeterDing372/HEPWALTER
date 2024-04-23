@@ -8,7 +8,7 @@ import argparse
 
 
 #container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
-container_name = "socialNetwork_user-timeline-mongodb.1.nr7jl4icltnt2q2v7e3h1r450"
+container_name = "socialNetwork_user-timeline-mongodb"
 
 binary = "/usr/bin/mongod"
 # source unmangled name
@@ -23,17 +23,51 @@ ptr_incrementAmount = 64
 mangledfilename = "manglednames.txt"
 unmangledfilename = "unmangledmanglednames.txt"
 
-def get_container_pid(container_name):
+# def get_container_pid(container_name):
+#     try:
+#         # Run the docker inspect command and capture the output
+#         output = subprocess.check_output(['sudo', 'docker', 'inspect', '-f', '{{.State.Pid}}', container_name])
+#         # Convert the output to string and parse it as JSON
+#         pid = int(output.decode().strip())
+#         print("The pid is: ", pid)
+#         return pid
+#     except subprocess.CalledProcessError as e:
+#         print(f"Error: {e}")
+#         return None
+
+import subprocess
+
+def get_container_pid(container_name_partial):
     try:
-        # Run the docker inspect command and capture the output
-        output = subprocess.check_output(['sudo', 'docker', 'inspect', '-f', '{{.State.Pid}}', container_name])
-        # Convert the output to string and parse it as JSON
-        pid = int(output.decode().strip())
-        print("The pid is: ", pid)
-        return pid
+        # List all running containers
+        output = subprocess.check_output(['sudo', 'docker', 'ps', '--format', '{{.Names}}'])
+        # Decode the output and split into container names
+        container_names = output.decode().strip().split('\n')
+        
+        # Find matching container names
+        matching_containers = [name for name in container_names if container_name_partial in name]
+        
+        if not matching_containers:
+            print("No containers found with the partial name provided.")
+            return None
+        
+        # Assuming you want PIDs of all matching containers
+        pids = []
+        for container in matching_containers:
+            # Get the PID of each matching container
+            pid_output = subprocess.check_output(['sudo', 'docker', 'inspect', '-f', '{{.State.Pid}}', container])
+            pid = int(pid_output.decode().strip())
+            pids.append((container, pid))
+        
+        for cont, pid in pids:
+            print(f"The pid for {cont} is: {pid}")
+        
+        return pids[0][1]
+
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
         return None
+
 
 
 pid = get_container_pid(container_name)

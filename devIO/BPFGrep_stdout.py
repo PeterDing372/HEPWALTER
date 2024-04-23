@@ -10,6 +10,7 @@ class BPFGrep:
         self.verbose = verbose  # Class attribute to control printing
         self.max_til_now = 0
         self.divergenceList = []
+        self.lostEvents = 0
         # Define all argument attributes
         self.ARGs = {
                 "sArg0": ArgClass(),
@@ -82,6 +83,7 @@ class BPFGrep:
         [Note] this will init the sArg0 object
         """
         while True:
+            self._print("[read_one_cluster]: Re-aligning...")
             label, buffer_content, ptr_addr = self.read_one_arg()
             if (label == "sArg0"):
                 # clear all argument
@@ -112,12 +114,11 @@ class BPFGrep:
 
     def read_one_cluster(self):
         # error reporting
-        
         if(self.ARGs["sArg0"].get_valid() == False):
-            print("[read_one_cluster]: Wrong inital status")
-            print("[read_one_cluster]: Re-aligning...")
+            print("[read_one_cluster]: re-aligning")
             self.align_cluster()
         self._read_one_cluster()
+        
         return time.time()
 
     def _read_one_cluster(self):
@@ -195,25 +196,18 @@ class BPFGrep:
                     div_len = self.find_divergence(arg_i.buffer_content, 
                                                     arg_j.buffer_content)
                     non_zero_found = False
+                    # Check if everything prior to divergence is zeros
                     for ind in range(0, div_len):
                         if arg_i.buffer_content[ind] != '0':
                             div_values.append(div_len)
                             non_zero_found = True
                             break
+                    # Append zero divergence for non-redundant buffers
                     if non_zero_found == False:
                         div_values.append(0)
 
-                    # Eliminate if everything prior to divergence is zeros
-                    # self.guarded_append(div_values, arg_i.buffer_content[:div_len], 
-                    #                             arg_j.buffer_content[:div_len], div_len)
         return div_values
-    
-    def guarded_append(self, list, str0, str1, div_len):
-        """
-        Only append if both str0 are not all zeros prior to divergence
-        """
-        if (self.not_zero_string(str0) and self.not_zero_string(str1)):
-            list.append(div_len)
+
     
     def clear(self):
         """
@@ -224,18 +218,18 @@ class BPFGrep:
             self.ARGs[key].clear()
 
 
-
     def read_one_arg(self):
         self._print("---------- start one set of read ----------")
         label = self.read_arg_label()
         ptr_addr = self.read_arg_ptr()
         buffer_content = self.read_buffer_content()
         if (label == None or ptr_addr == None or buffer_content == None):
+            self.lostEvents+=1
             return None, None, None
         else:
             return label, buffer_content, ptr_addr
 
-    # ---------- Helper Functions Below ----------
+    # -------------------- Helper Functions Below --------------------
     def lastNchar(self, str, ch, N):
         str += ch
         if len(str) > N:
