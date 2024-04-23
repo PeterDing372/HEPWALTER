@@ -1,6 +1,6 @@
 
 // Source Args
-uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE19appendDiscriminatorENS0_13DiscriminatorE
+uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
 {
 
 	printf("sArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -21,7 +21,7 @@ uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19St
 }
 
 // Source Retval
-uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE19appendDiscriminatorENS0_13DiscriminatorE
+uretprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
 {
 
 
@@ -30,7 +30,7 @@ uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_1
 }
 
 // Destination Args
-uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE12_appendBytesEPKvmb
+uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc8PageHeap5CarveEPNS_4SpanEm
 {
 
 	printf("dArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -50,7 +50,7 @@ uprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19St
 }
 
 // Destination Retval
-uretprobe:/proc/11925/root//usr/bin/mongod:_ZN5mongo9KeyString11BuilderBaseINS_19StackBufBuilderBaseILm512EEEE12_appendBytesEPKvmb
+uretprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc8PageHeap5CarveEPNS_4SpanEm
 {
 
 
