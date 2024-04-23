@@ -8,13 +8,13 @@ import argparse
 
 
 #container_name = "socialNetwork_social-graph-mongodb.1.jtqfoz0tf6gwdj4lb13s372qb"
-container_name = "socialNetwork_user-timeline-mongodb.1.mub6zjyb0415k3wnisdqn6n5k"
+container_name = "socialNetwork_user-timeline-mongodb.1.nr7jl4icltnt2q2v7e3h1r450"
 
 binary = "/usr/bin/mongod"
 # source unmangled name
-Source = "tcmalloc::NewSpan(unsigned long, unsigned long)"
+Source = "mongo::mutablebson::Element::getType"
 # dest unmangled name
-Dest = "tcmalloc::PageHeap::Carve(tcmalloc::Span*, unsigned long)"
+Dest = "mongo::BSONElement::BSONElement(char const*"
 bufflength = 64
 #ptr_incrementlength = 1
 ptr_incrementAmount = 64

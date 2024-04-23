@@ -190,11 +190,30 @@ class BPFGrep:
                 
                 pointers_different = arg_i.ptr_addr != arg_j.ptr_addr
                 if(pointers_different and 
-                   arg_i.get_valid() and arg_j.get_valid()
-                    and self.not_zero_string(arg_i.buffer_content) and self.not_zero_string(arg_j.buffer_content)):
-                    div_index = self.find_divergence(arg_i.buffer_content, arg_j.buffer_content)
-                    div_values.append(div_index)
+                    arg_i.get_valid() and arg_j.get_valid()):
+                    # Find divergence anyway    
+                    div_len = self.find_divergence(arg_i.buffer_content, 
+                                                    arg_j.buffer_content)
+                    non_zero_found = False
+                    for ind in range(0, div_len):
+                        if arg_i.buffer_content[ind] != '0':
+                            div_values.append(div_len)
+                            non_zero_found = True
+                            break
+                    if non_zero_found == False:
+                        div_values.append(0)
+
+                    # Eliminate if everything prior to divergence is zeros
+                    # self.guarded_append(div_values, arg_i.buffer_content[:div_len], 
+                    #                             arg_j.buffer_content[:div_len], div_len)
         return div_values
+    
+    def guarded_append(self, list, str0, str1, div_len):
+        """
+        Only append if both str0 are not all zeros prior to divergence
+        """
+        if (self.not_zero_string(str0) and self.not_zero_string(str1)):
+            list.append(div_len)
     
     def clear(self):
         """
@@ -226,20 +245,28 @@ class BPFGrep:
 
     def read_arg_label(self):
         arg_type = ""
+        last4_chars = "" 
         while True:
             ch = self.stream.read(1)
+            last4_chars = self.lastNchar(last4_chars, ch, 4)
             if ch == ':' or not ch:
                 break
+            if (last4_chars == "Lost"):
+                return None
             arg_type += ch
         self._print("arg type: " + arg_type)
         return arg_type
 
     def read_arg_ptr(self):
         arg_ptr = ""
+        last4_chars = "" 
         while True:
             ch = self.stream.read(1)
+            last4_chars = self.lastNchar(last4_chars, ch, 4)
             if ch == '\n' or not ch:
                 break
+            if (last4_chars == "Lost"):
+                return None
             arg_ptr += ch
         self._print("arg ptr: "+ arg_ptr)
         return self.to_int(arg_ptr)
@@ -315,7 +342,7 @@ class BPFGrep:
         """
         Finds the divergence index of two strings
         
-        return: Index of divergence in strings
+        return: Length of divergence in strings
         return the length of the shorter string if no differences were found
         """
         self._print("find divergence")

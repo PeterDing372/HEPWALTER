@@ -1,6 +1,6 @@
 
 // Source Args
-uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
+uprobe:/proc/117504/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getTypeEv
 {
 
 	printf("sArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -21,7 +21,7 @@ uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
 }
 
 // Source Retval
-uretprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
+uretprobe:/proc/117504/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getTypeEv
 {
 
 
@@ -30,7 +30,7 @@ uretprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc7NewSpanEmm
 }
 
 // Destination Args
-uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc8PageHeap5CarveEPNS_4SpanEm
+uprobe:/proc/117504/root//usr/bin/mongod:_ZN5mongo11BSONElementC1EPKc
 {
 
 	printf("dArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -50,7 +50,7 @@ uprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc8PageHeap5CarveEPNS_4SpanEm
 }
 
 // Destination Retval
-uretprobe:/proc/23392/root//usr/bin/mongod:_ZN8tcmalloc8PageHeap5CarveEPNS_4SpanEm
+uretprobe:/proc/117504/root//usr/bin/mongod:_ZN5mongo11BSONElementC1EPKc
 {
 
 
