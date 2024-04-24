@@ -107,10 +107,6 @@ class BPFGrep:
             self.process.stderr.close()
             self.process.wait()  # Wait for the process to terminate
     
-    def run_for_duration():
-        # TODO
-        return 
-    
 
     def read_one_cluster(self):
         # error reporting
@@ -302,12 +298,15 @@ class BPFGrep:
             if self.is_buffer_end(last14_chars):
                 self.stream.read(1)
                 break
-        buffer_content = self.clean_tail(buffer_content, max_chars)
-        buffer_content = self.strip_string(buffer_content)
-        self._print(buffer_content)
+        # buffer_content = self.clean_tail(buffer_content, max_chars)
+        # buffer_content = self.strip_string(buffer_content)
+        # self._print(buffer_content)
         if (failed):
             return None
         else: 
+            buffer_content = self.clean_tail(buffer_content, max_chars)
+            buffer_content = self.strip_string(buffer_content)
+            self._print(buffer_content)
             return buffer_content
 
     def is_buffer_end(self, input_str):
@@ -317,7 +316,7 @@ class BPFGrep:
         if len(input_str) >= num_chars_to_remove:
             return input_str[:-num_chars_to_remove]
         else:
-            self._print("Error: The string is shorter than 13 characters.")
+            self._print(f"Error: The string is shorter than 14 characters: {input_str}")
             return input_str
         
     def strip_string(self, str):
@@ -334,9 +333,9 @@ class BPFGrep:
         return False
     def find_divergence(self, str1, str2):
         """
-        Finds the divergence index of two strings
+        Finds the divergence bytes length
         
-        return: Length of divergence in strings
+        return: Length of divergence in strings 
         return the length of the shorter string if no differences were found
         """
         self._print("find divergence")
@@ -344,7 +343,7 @@ class BPFGrep:
         for i in range(min_length):
             if str1[i] != str2[i]:
                 self._print("find divergence done")
-                return i  
+                return i // 2
     
         # If no differences were found within the shorter length, 
         # return the length of the shorter string

@@ -1,6 +1,6 @@
 
 // Source Args
-uprobe:/proc/127314/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getTypeEv
+uprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy15ByteArraySource4SkipEm
 {
 
 	printf("sArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -21,7 +21,7 @@ uprobe:/proc/127314/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getType
 }
 
 // Source Retval
-uretprobe:/proc/127314/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getTypeEv
+uretprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy15ByteArraySource4SkipEm
 {
 
 
@@ -30,7 +30,7 @@ uretprobe:/proc/127314/root//usr/bin/mongod:_ZNK5mongo11mutablebson7Element7getT
 }
 
 // Destination Args
-uprobe:/proc/127314/root//usr/bin/mongod:_ZN5mongo11BSONElementC1EPKc
+uprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy8CompressEPNS_6SourceEPNS_4SinkE
 {
 
 	printf("dArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
@@ -50,7 +50,7 @@ uprobe:/proc/127314/root//usr/bin/mongod:_ZN5mongo11BSONElementC1EPKc
 }
 
 // Destination Retval
-uretprobe:/proc/127314/root//usr/bin/mongod:_ZN5mongo11BSONElementC1EPKc
+uretprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy8CompressEPNS_6SourceEPNS_4SinkE
 {
 
 

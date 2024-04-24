@@ -16,6 +16,7 @@ def run_bpftrace_for_duration(bpffile="final_run.bt"):
         start_time = time.time() + 1000000000000
         current_time = -1
         count_iterations = 0
+        LOSTMAX = 10
 
         while time.time() - start_time < TOTAL_RUN_TIME:
             current_time = BPFGrepObj.read_one_cluster()
@@ -23,10 +24,13 @@ def run_bpftrace_for_duration(bpffile="final_run.bt"):
             print(f"{current_time=}")
             if not start_time_set:
                 start_time = current_time; start_time_set=True
+            if BPFGrepObj.lostEvents > LOSTMAX: 
+                print("[Final] Reached max lost event. Quitting")
+                break
                 
         BPFGrepObj.process.terminate()
-        # for item in BPFGrepObj.divergenceList:
-        #     print(f"max: {item[0]} avg : {item[1]}")
+        for item in BPFGrepObj.divergenceList:
+            print(f"max: {item[0]} avg : {item[1]}")
         print(f"total clusters captured: {len(BPFGrepObj.divergenceList)} total iterations: {count_iterations}" )
         
         return "done"

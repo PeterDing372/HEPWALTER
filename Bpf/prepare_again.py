@@ -12,9 +12,9 @@ container_name = "socialNetwork_user-timeline-mongodb"
 
 binary = "/usr/bin/mongod"
 # source unmangled name
-Source = "mongo::mutablebson::Element::getType"
+Source = "snappy::ByteArraySource::Skip(unsigned long)"
 # dest unmangled name
-Dest = "mongo::BSONElement::BSONElement(char const*"
+Dest = "snappy::Compress(snappy::Source*, snappy::Sink*)"
 bufflength = 64
 #ptr_incrementlength = 1
 ptr_incrementAmount = 64
