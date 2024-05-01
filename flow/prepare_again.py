@@ -9,14 +9,14 @@ import argparse
 
 # container_name = "socialNetwork_social-graph-mongod"
 #container_name = "socialNetwork_media-frontend"
-container_name = "socialNetwork_social-graph-redis"
+container_name = "socialNetwork_user-timeline-mongodb"
 
-binary = "/usr/local/bin/redis-server"
+binary = "/usr/bin/mongod"
 # binary = "/usr/local/openresty/nginx/sbin/nginx"
 # source unmangled name
-Source = "sdsMakeRoomFor"
+Source = "mongo::AuthorizationManagerImpl::isAuthEnabled()"
 # dest unmangled name
-Dest = "_sdsMakeRoomFor"
+Dest = "mongo::AuthzSessionExternalStateServerCommon::_checkShouldAllowLocalhost(mongo::OperationContext*)"
 #bufflength = 64
 bufflength = 32
 #ptr_incrementlength = 1

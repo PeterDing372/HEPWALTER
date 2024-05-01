@@ -1,6 +1,6 @@
 
 // Source Args
-uprobe:/proc/1280588/root//usr/local/bin/redis-server:sdsMakeRoomFor
+uprobe:/proc/3866333/root//usr/bin/mongod:_ZNK5mongo24AuthorizationManagerImpl13isAuthEnabledEv
 {
 	printf("sArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 32));
 
@@ -18,7 +18,7 @@ uprobe:/proc/1280588/root//usr/local/bin/redis-server:sdsMakeRoomFor
 }
 
 // Source Retval
-uretprobe:/proc/1280588/root//usr/local/bin/redis-server:sdsMakeRoomFor
+uretprobe:/proc/3866333/root//usr/bin/mongod:_ZNK5mongo24AuthorizationManagerImpl13isAuthEnabledEv
 {
 	printf("sRetVal:%zu\n%r**HEPWALTER***\n", retval, buf(retval, 32));
 
@@ -32,7 +32,7 @@ uretprobe:/proc/1280588/root//usr/local/bin/redis-server:sdsMakeRoomFor
 
 
 // Destination Args
-uprobe:/proc/1280588/root//usr/local/bin/redis-server:_sdsMakeRoomFor
+uprobe:/proc/3866333/root//usr/bin/mongod:_ZN5mongo37AuthzSessionExternalStateServerCommon26_checkShouldAllowLocalhostEPNS_16OperationContextE
 {
 	printf("dArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 32));
 
@@ -50,7 +50,7 @@ uprobe:/proc/1280588/root//usr/local/bin/redis-server:_sdsMakeRoomFor
 }
 
 // Destination Retval
-uretprobe:/proc/1280588/root//usr/local/bin/redis-server:_sdsMakeRoomFor
+uretprobe:/proc/3866333/root//usr/bin/mongod:_ZN5mongo37AuthzSessionExternalStateServerCommon26_checkShouldAllowLocalhostEPNS_16OperationContextE
 {
 	printf("dRetval:%zu\n%r**HEPWALTER***\n", retval, buf(retval, 32));
 
