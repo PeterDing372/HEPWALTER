@@ -67,3 +67,8 @@ Here are the End to End commands:
     a.) the total average bytes per function call out of data collect from all iterations
     
     b.) the max divergence length (in bytes and non-zero) out of all iterations
+
+
+
+
+## We have omitted links to Jaylen and Deepanjali's scripts because this repo is public
