@@ -1,0 +1,35 @@
+
+// source arguments
+uprobe:/proc/PID/root/binary:SOURCE
+   // args as pointers
+   printf("%zu\t%zu\t%zu\t%zu\t%zu\t%zu\n", arg0, arg1, arg2, arg3, arg4, arg5);
+   // args as dereferenced values
+   printf("%rh\t%rh\t%rh\t%rh\t%rh\t%rh\t\n", buf(arg0), buf(arg1), buf(arg2), buf(arg3), buf(arg4), buf(arg5));
+}
+
+// source rets
+uretprobe:/proc/PID/root/binary:SOURCE
+{
+    // retval as pointer
+   printf("%zu\n", retval);
+    // retval as dereferences
+   printf("%rh\n", buf(retval));
+}
+
+// destination arguments
+uprobe:/proc/PID/root/binary:DEST
+{
+   // args as pointers
+   printf("%zu\t%zu\t%zu\t%zu\t%zu\t%zu\n", arg0, arg1, arg2, arg3, arg4, arg5);
+   // args as dereferenced values
+   printf("%rh\t%rh\t%rh\t%rh\t%rh\t%rh\t\n", buf(arg0), buf(arg1), buf(arg2), buf(arg3), buf(arg4), buf(arg5));
+}
+
+// destination rets
+uretprobe:/proc/PID/root/binary:DEST
+{
+    // retval as pointer
+   printf("%zu\n", retval);
+    // retval as dereferences
+   printf("%rh\n", buf(retval));
+}

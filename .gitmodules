@@ -1,0 +1,3 @@
+[submodule "perf_chains"]
+    path = perf_chains
+    url = git@github.com:PeterDing372/candidate_perf_chains.git

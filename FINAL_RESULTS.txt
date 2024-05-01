@@ -1,0 +1,124 @@
+jaeger-agent
+    Didn't test
+
+jaeger-collector
+    Didn't test
+
+jaeger-query
+    Didn't test
+
+socialNetwork_cassandra
+    This either did not have any tax functions
+    Or Jaylen/Deepanjali's bucketization did not pick them
+
+cassandra-schema ###
+    This either did not have any tax functions
+    Or Jaylen/Deepanjali's bucketization did not pick them
+
+compose-post-service
+    perf took forever
+
+home-timeline-redis
+    Almost zero work found
+
+home-timeline-service
+    perf took forever
+
+media-frontend
+    Not enough work
+
+socialNetwork_media-memcached
+    Not enough work
+
+socialNetwork_media-mongodb
+    Not enough work
+
+media-service
+    Could not find any serialization, compression or encryption keywords
+
+socialNetwork_nginx-web-server
+    1. func_id: 33 bytes/cluster = 7.867 cc/cluster = 268 max = 9 [ser]
+    2. func_id: 42 bytes/cluster = 7.64 cc/cluster = 239 max = 9 [ser]
+    3. func_id: 138 bytes/cluster = 0.029 cc/cluster = 319 max = 1 [enc]
+    4. func_id: 174 bytes/cluster = 0.081 cc/cluster = 693 max = 4 [enc]
+    5. func_id: 58 bytes/cluster = 0.327 cc/cluster = 345 max = 13 [ser]
+    6. func_id: 149 bytes/cluster = 0.172 cc/cluster = 118 max = 8 [ser]
+
+post-storage-memcached
+    Not enough work
+
+post-storage-mongod
+    *# Note func_id 125 only captured once
+    1. func_id: 120 bytes/cluster = 0.012 cc/cluster = 29.51 max = 1 [ser]
+    *2. func_id: 125 bytes/cluster = 0 cc/cluster = 14.54 max = 0 [ser]
+    3. func_id: 128 bytes/cluster = 1.12 cc/cluster = 261.62 max = 1 [enc]
+    4. func_id: 129 bytes/cluster = 0.0073 cc/cluster = 221.64 max = 5 [enc]
+    5. func_id: 184 bytes/cluster = 0.00313 cc/cluster = 23.09 max = 1 [ser]
+    6. func_id: 241 bytes/cluster = 41.63 cc/cluster = 16.89 max = 16 [ser]
+    7. func_id: 254 bytes/cluster = 33.91 cc/cluster = 38.69 max = 14 [ser]
+    8. func_id: 260 bytes/cluster = 78.4 cc/cluster = 145.74 max = 25 [enc]
+    9. func_id: 293 bytes/cluster = 42.002 cc/cluster = 52.61 max = 22 [ser]
+    10. func_id: 314 bytes/cluster = 33.58 cc/cluster = 136.68 max = 1 [ser]
+    11. func_id: 329 bytes/cluster = 19.65 cc/cluster = 37.1 max = 1 [ser]
+    
+
+post-storage-service
+    Perf took forever
+
+socialNetwork_social-graph-mongodb
+    1. func_id: 100 bytes/cluster = 1.123 cc/cluster = 292.6 max = 1 [enc]
+    2. func_id: 125 bytes/cluster = 0.224 cc/cluster = 223 max = 24 [enc]
+    3. func_id: 162 bytes/cluster = 0.0107 cc/cluster = 26.359 max = 8 [ser] 
+    4. func_id: 173 bytes/cluster = 5.04 cc/cluster = 35.35 max = 27 [ser]
+    5. func_id: 332 bytes/cluster = 0.56 cc/cluster = 140.44 max = 23 [enc]
+    6. func_id: 341 bytes/cluster = 0 cc/cluster = 33.99 max = 0 [ser]
+    7. func_id: 382 bytes/cluster = 0.18 cc/cluster = 98.15 max = 23 [enc]
+    8. func_id: 564 bytes/cluster = 0.30 cc/cluster = 78.29 max = 2 [enc]
+    
+     
+
+
+social-graph-redis
+    Not enough work
+
+social-graph-service
+    Not enough work (FOR NOW)
+
+
+text-service
+    Perf took forever
+
+Unique ID
+    Perf took forever
+
+url-shorten-memcached
+    Not enough work
+
+url-shorten-mongodb
+    No tax functions
+
+url-shorten-service
+    Perf took forever
+
+user-memcached
+    HAS CANDIDATE FUNCTIONS
+
+user-mention-service
+    Perf took forever
+
+user-mongodb
+    HAS CANDIDATE FUNCTIONS
+
+user-service
+    Perf took forever
+
+socialNetwork_user-timeline-mongodb
+    1. func_id: 37 bytes/cluster = 0 cc/cluster = 18 max = 0 [ser]
+    2. func_id: 222 bytes/cluster = 0.397 cc/cluster = 436 max = 43 [enc]
+    3. func_id: 274 bytes/cluster = 1.12 cc/cluster = 419 max = 1 [enc]
+
+user-timeline-redis
+    HAS CANDIDATE FUNCTIONS
+
+user-timeline-service
+    Perf took forever

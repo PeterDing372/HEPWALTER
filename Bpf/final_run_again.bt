@@ -1,0 +1,58 @@
+
+// Source Args
+uprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy15ByteArraySource4SkipEm
+{
+
+	printf("sArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
+
+	printf("sArg1:%zu\n%r**HEPWALTER***\n", arg1, buf(arg1, 64));
+
+	printf("sArg2:%zu\n%r**HEPWALTER***\n", arg2, buf(arg2, 64));
+
+	printf("sArg3:%zu\n%r**HEPWALTER***\n", arg3, buf(arg3, 64));
+
+	printf("sArg4:%zu\n%r**HEPWALTER***\n", arg4, buf(arg4, 64));
+
+	printf("sArg5:%zu\n%r**HEPWALTER***\n", arg5, buf(arg5, 64));
+
+
+
+   
+}
+
+// Source Retval
+uretprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy15ByteArraySource4SkipEm
+{
+
+
+
+   
+}
+
+// Destination Args
+uprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy8CompressEPNS_6SourceEPNS_4SinkE
+{
+
+	printf("dArg0:%zu\n%r**HEPWALTER***\n", arg0, buf(arg0, 64));
+
+	printf("dArg1:%zu\n%r**HEPWALTER***\n", arg1, buf(arg1, 64));
+
+	printf("dArg2:%zu\n%r**HEPWALTER***\n", arg2, buf(arg2, 64));
+
+	printf("dArg3:%zu\n%r**HEPWALTER***\n", arg3, buf(arg3, 64));
+
+	printf("dArg4:%zu\n%r**HEPWALTER***\n", arg4, buf(arg4, 64));
+
+	printf("dArg5:%zu\n%r**HEPWALTER***\n", arg5, buf(arg5, 64));
+
+
+
+}
+
+// Destination Retval
+uretprobe:/proc/127314/root//usr/bin/mongod:_ZN6snappy8CompressEPNS_6SourceEPNS_4SinkE
+{
+
+
+
+}

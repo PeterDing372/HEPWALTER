@@ -1,0 +1,30 @@
+
+// Source Args
+uprobe:/proc/PID/root/binary:SOURCE
+{
+SARGS
+}
+
+// Source Retval
+uretprobe:/proc/PID/root/binary:SOURCE
+{
+SRETVAL
+}
+
+
+
+
+
+
+
+// Destination Args
+uprobe:/proc/PID/root/binary:DEST
+{
+DARGS
+}
+
+// Destination Retval
+uretprobe:/proc/PID/root/binary:DEST
+{
+DRETVAL
+}
