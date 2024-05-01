@@ -64,7 +64,7 @@ def average_second_values(tuples_list):
    
 def main():
     print("[main] Generating .bt files")
-    run_python_script("prepare_again.py")
+    run_python_script("prepare.py")
     iterations = 20
     duration = 5
     lost_threshold = 5
