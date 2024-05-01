@@ -6,7 +6,8 @@ The details surrounding HEPWALTER are explored in finer granularity in the corre
 Here are the End to End commands:
 1. Get microservice of interest running on Node 0 (Refer to Jaylen's script for instructions)
 2. Confirm the singular container is running using "sudo docker stats"
-3. Follow the following customized perf_chains instructions to gather perf data
+3. Clone Deepanjali's perf_chain repo.
+4. Follow these customized perf_chains instructions (inside that repo) to gather perf data
 
     a.) Use `sudo docker stats` to get container ID
    
@@ -16,7 +17,7 @@ Here are the End to End commands:
 
     d.) Place resulting perf.data into `perf_chains/` directory
 
-    e.) Use `sudo chmod +x setup.sh` to install all necessary setup.
+    e.) Use `sudo chmod +x setup.sh` to install all necessary setup
 
     f.) Update path accordingly in symbolizer.py
 
@@ -29,11 +30,13 @@ Here are the End to End commands:
    `protoc --python_out=. ./profile.proto`
    
    `protoc --python_out=. ./perf_data.proto`
-   
-    j.) `sudo python3 print_candidate_functions.py` to extract candidate functions
 
-    k.) `sudo python3 print_candidate_functions.py > <container_name>.txt` to write candidate function
-5. Follow the following instructions to generate customized BPFtrace script
+    j.) Copy `print_candidate_function.py` into this folder
+   
+    k.) `sudo python3 print_candidate_functions.py` to extract candidate functions
+
+    l.) `sudo python3 print_candidate_functions.py > <container_name>.txt` to write candidate function
+6. Follow the following instructions to generate customized BPFtrace script
 
     a.) Replace `container_name` in prepare.py with container name of interest.
 
